@@ -1,1 +1,2 @@
-# projetfb2016
+# Hackathon - groupe 7 
+
