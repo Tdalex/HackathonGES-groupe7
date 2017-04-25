@@ -18,7 +18,6 @@ class view{
 		}else{
 			die("Le template n'exite pas");
 		}
-
 	}
 
 	public function assign($key, $value){
@@ -26,7 +25,8 @@ class view{
 	}
 
 	public function __destruct(){
-		extract($this->data);
+		if(!empty($this->data))
+			extract($this->data);
 		include $this->t;
 	}
 

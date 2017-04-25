@@ -30,7 +30,7 @@ abstract class controller{
 		}
 	}
 	
-    public static function connectUser($email, password){
+    public static function connectUser($email, $password){
         $dbh = controller::dbConnect();
         $sth = $dbh->prepare('SELECT * FROM user WHERE email = '. $email .' && password = ' . $password);
         $sth ->execute();

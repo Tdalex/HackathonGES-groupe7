@@ -1,12 +1,13 @@
 <?php
 
+require('controller.class.php');
+
 class indexController{
 
 	public function __construct(){
 	}
 
 	public function indexAction($request){
-		echo "index";
 		$v = new view("homeView");
 		$v->assign("pseudo", "yves");
 
