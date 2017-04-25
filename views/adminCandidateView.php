@@ -14,7 +14,7 @@
                         <div class="col-lg-offset-6 col-lg-3">
                             <a href='/admin/JobApplication'>
                                 <i class="glyphicon glyphicon-plus">
-                                    <span class="text">gestion des jobs</span>
+                                    <span class="text">gestion des postes à pourvoir</span>
                                 </i>
                             </a>
 							<a href='/admin/Questions'>

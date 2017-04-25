@@ -10,19 +10,45 @@ class adminController{
 	public function indexAction($request){
 		$_SESSION['role'] = 'admin';
 		$_SESSION['surname'] = 'root';
-		if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
+		
+		//check admin
+		if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin')
 			controller::redirect();
-		}
-		$v = new view("adminHomeView");
-		$v->assign("filter", array());
-		$v->assign("content", array());
-		$v->assign("maxPage", 1);
-		$v->assign("page", 1);
+		
+		
+		$page = 1;
+		
+		//max contest per page
+		$limit = 3;
+		
+		//start to fetch at
+		$offset = ($page - 1) * $limit;
+		
+		//filter
+		$filter = array();
+		
+		// query get all Candidates by filter
+		$query = 'SELECT * FROM candidate order by Id_contest DESC LIMIT '. $offset. ','.$limit;
+
+		// get contests
+		
+		$dbh = controller::dbConnect();
+		$sth = $dbh->prepare($query);
+		$sth->execute();
+		$candidates = $sth->fetchAll();
+		
+		//get total number of contest
+		$sth = $dbh->prepare('SELECT count(*) FROM candidate');
+		$sth->execute();
+		
+		$countCandidate = $sth->fetch();
+		$maxPage = $countCandidate[0] /$limit;
+		
+		$v = new view("adminCandidateView");
+		$v->assign('maxPage', $maxPage);
+		$v->assign('page', $page);
+		$v->assign("candidate", $candidates);
+		$v->assign('filter', $filter);
 
 	}
-
-	public function homeAction($request){
-		echo "home";
-	}
-
 }

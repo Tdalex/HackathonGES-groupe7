@@ -18,9 +18,9 @@ abstract class controller{
 	public static function dbConnect(){
 		try {
 			if(isset($_SERVER['HTTPS'])){
-				$dbh = new PDO('mysql:host=localhost;dbname=gfi_play', 'root', '');
+				$dbh = new PDO('mysql:host=localhost;dbname=gfiplay', 'root', '');
 			}else{
-				$dbh = new PDO('mysql:host=localhost;dbname=gfi_play', 'root');
+				$dbh = new PDO('mysql:host=localhost;dbname=gfiplay', 'root');
 			}
 			
 			return $dbh;
