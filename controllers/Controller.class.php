@@ -37,4 +37,21 @@ abstract class controller{
         return $sth->fetch();
     }
 
+    public function saveUser(){
+        $dbh = controller::dbConnect();
+        $sth = $dbh->prepare('INSERT INTO user ("Name", "Surname", "Birthdate", "Email", "CV", "Role", "Password") 
+                              VALUES ('. $_POST["name"] .', '. $_POST["surname"] .', '. $_POST["birthday"] .', '. $_POST["email"] .', '. $_POST["cv"] .', '. $_POST["role"] .', '. $_POST["password"] .')');
+        $sth->execute();
+
+        $idUser = $dbh->lastInsertId();
+        $nameUser = $_POST['name'];
+        $surnameUser = $_POST['surname'];
+
+        $_SESSION['id_user'] = $idUser;
+        $_SESSION['name_user'] = $nameUser;
+        $_SESSION['surname_user'] = $surnameUser;
+
+        return controller::redirect();
+    }
+
 }
