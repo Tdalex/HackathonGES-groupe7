@@ -14,14 +14,14 @@
 		$protocol = 'http://';
 	}
 	define('serverUrl', $protocol . $_SERVER['HTTP_HOST']);
-	
+
     spl_autoload_register('my_autoloader');
 
     $uri = trim($_SERVER["REQUEST_URI"], "/");
     $array_uri = explode("/", $uri);
-	
+
     $c = (!empty($array_uri[0]))?$array_uri[0].'Controller':"indexController";
-    
+
     $path_c = "controllers/".$c.".class.php";
 
     $a = (isset($array_uri[1]))?$array_uri[1]."Action":"indexAction";

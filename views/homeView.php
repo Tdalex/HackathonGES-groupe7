@@ -1,2 +1,2 @@
-<h2>CECI EST MA VUE</h2>
+<h2>hackaton Gfi</h2>
 <?php echo $pseudo;?>

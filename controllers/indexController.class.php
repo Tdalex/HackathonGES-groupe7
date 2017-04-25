@@ -1,6 +1,6 @@
 <?php
 
-require('controller.class.php');
+require('Controller.class.php');
 
 class indexController{
 
