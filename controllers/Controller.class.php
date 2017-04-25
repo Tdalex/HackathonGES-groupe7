@@ -30,9 +30,9 @@ abstract class controller{
 		}
 	}
 	
-    public static function getInfoUserByLocalId($idUser){
+    public static function connectUser($email, password){
         $dbh = controller::dbConnect();
-        $sth = $dbh->prepare('SELECT * FROM user WHERE id_user = '. $idUser);
+        $sth = $dbh->prepare('SELECT * FROM user WHERE email = '. $email .' && password = ' . $password);
         $sth ->execute();
         return $sth->fetch();
     }
