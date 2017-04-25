@@ -14,6 +14,10 @@ class adminController{
 			controller::redirect();
 		}
 		$v = new view("adminHomeView");
+		$v->assign("filter", array());
+		$v->assign("content", array());
+		$v->assign("maxPage", 1);
+		$v->assign("page", 1);
 
 	}
 

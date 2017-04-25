@@ -1,5 +1,8 @@
 {
   "require" : {
 	"doctrine/orm": "*"
+  },
+  "require-dev": {
+    "mysql-workbench-schema-exporter/doctrine2-exporter": "^3.0"
   }
 }
