@@ -10,7 +10,6 @@ class indexController{
 	public function indexAction($request){	
 		$v = new view("homeView");
 		$v->assign("pseudo", "yves");
-
 	}
 
 	public function homeAction($request){
