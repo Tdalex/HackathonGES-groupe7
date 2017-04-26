@@ -45,8 +45,14 @@
 												</div>
 
 												<div class="form-group">
-													<label for="job">Poste</label>
-													<input type="text" id="job" placeholder="Poste" class="form-control"/>
+													<label for="job">Poste</label></br>
+													<select id='job'>
+													<?php
+														foreach($availableJobs as $job) {
+															echo "<option id='job-".$job['IdJobApplication']."' value='".$job['IdJobApplication']."'>".$job['Name']."</option>";
+														}
+													?>
+													</select>
 												</div>
 												<div class="form-group">
 													<label for="answer">Reponse</label>
@@ -78,7 +84,13 @@
 
 												<div class="form-group">
 													<label for="job">Poste</label>
-													<input type="text" id="job" placeholder="Poste" class="form-control"/>
+													<select id='job'></br>
+													<?php
+														foreach($availableJobs as $job) {
+															echo "<option id='job-".$job['IdJobApplication']."' value='".$job['IdJobApplication']."'>".$job['Name']."</option>";
+														}
+													?>
+													</select>
 												</div>
 												<div id='anwser1'>
 													<label >Reponse 1</label>

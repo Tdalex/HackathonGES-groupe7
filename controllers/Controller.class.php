@@ -83,6 +83,17 @@ abstract class controller{
         return $res;
     }
 
+    public static function getAvailbleJobs(){
+        //sélection de toutes les postes libres
+        $dbh = self::dbConnect();
+        $query = 'SELECT * FROM jobapplication where quantity > 0';
+        $sth = $dbh->prepare($query);
+        $sth->execute();
+        $res = $sth->fetchAll();
+
+        return $res;
+    }
+
     public static function selectDefaults(){
         //sélection de tous les défauts
         $dbh = self::dbConnect();
