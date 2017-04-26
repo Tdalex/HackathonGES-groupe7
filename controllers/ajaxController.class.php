@@ -16,9 +16,26 @@ class ajaxController{
 			$dbh = controller::dbConnect();
 			switch($_POST['action']){
 				case 'Questions':
-					$sth = $dbh->prepare('INSERT INTO question (Name,Quantity,Timeout,Description) VALUES("'.$_POST['name'].'","'.$_POST['quantity'].'","'.$_POST['timeout'].'","'.$_POST['description'].'")');		
+					$sth = $dbh->prepare('INSERT INTO Question (Wording,Type,IdJobApplication) VALUES("'.$_POST['wording'].'","'.$_POST['type'].'","'.$_POST['job'].'")');		
 					$sth->execute();
-					break;
+					$idQuestion = $dbh->lastInsertId();
+					if($_POST['type'] == 'QCM'){
+						$i = 1;
+						foreach($_POST['text_answer'] as $answer){
+							if(in_array($i, $_POST['is_answer'])){
+								$is_answer = 1;
+							}else{
+								$is_answer = 0;
+							}
+							$sth = $dbh->prepare('INSERT INTO Answer (Text,Is_Answer,IdQuestion) VALUES("'.$answer.'","'. $is_answer.'","'.$idQuestion.'")');		
+							$sth->execute();
+							$i++;
+						}
+					}else{
+						$sth = $dbh->prepare('INSERT INTO Answer (Text,Is_Answer,IdQuestion) VALUES("'.$_POST['answer'].'","1","'.$idQuestion.'")');		
+						$sth->execute();
+					}
+				break;
 	
 				case 'Postes':				
 					$sth = $dbh->prepare('INSERT INTO jobapplication (Name,Quantity,Timeout,Description) VALUES("'.$_POST['name'].'","'.$_POST['quantity'].'","'.$_POST['timeout'].'","'.$_POST['description'].'")');		
@@ -26,7 +43,7 @@ class ajaxController{
 					break;
 
 				case 'Caracteres':
-					$sth = $dbh->prepare('INSERT INTO skills (Name,Quantity,Timeout,Description) VALUES("'.$_POST['name'].'","'.$_POST['quantity'].'","'.$_POST['timeout'].'","'.$_POST['description'].'")');		
+					$sth = $dbh->prepare('INSERT INTO skills (Name,Type) VALUES("'.$_POST['name'].'","'.$_POST['type'].'")');		
 					$sth->execute();
 					break;
 			}
