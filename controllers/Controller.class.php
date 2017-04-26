@@ -1,8 +1,8 @@
 <?php
 
 
-abstract class controller{
-	
+abstract class Controller{
+
 
 	public function __construct(){
 	}
@@ -11,7 +11,7 @@ abstract class controller{
 		if($location == 'home'){
 			$location = serverUrl;
 		}elseif(substr($location, 0, 4) != 'http'){
-			$location = serverUrl . $location;			
+			$location = serverUrl . $location;
 		}
 
 		return header('Location:'. $location);
@@ -24,14 +24,14 @@ abstract class controller{
 			}else{
 				$dbh = new PDO('mysql:host=localhost;dbname=gfiplay', 'root');
 			}
-			
+
 			return $dbh;
 		} catch (PDOException $e) {
 			print "Erreur !: " . $e->getMessage() . "<br/>";
 			die();
 		}
 	}
-	
+
     public static function connectUser($email, $password){
         $dbh = self::dbConnect();
         var_dump($email.' '.$password);
