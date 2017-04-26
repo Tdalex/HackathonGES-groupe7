@@ -10,13 +10,13 @@ class view{
 		if(file_exists("views/".$view.".php")){
 			$this->v = "views/".$view.".php";
 		}else{
-			die("La vue n'exite pas");
+			die("La vue n'existe pas");
 		}
 
 		if(file_exists("views/".$template.".php")){
 			$this->t = "views/".$template.".php";
 		}else{
-			die("Le template n'exite pas");
+			die("Le template n'existe pas");
 		}
 	}
 
