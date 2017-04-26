@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bff3293-156d-4a67-a0f6-526c6118aa96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/adminView.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/modal/addCaracteres.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/modal/addPostes.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/modal/addQuestions.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/adminCandidateView.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/adminSkillsView.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB/GFIplay.mwb" afterPath="$PROJECT_DIR$/DB/GFIplay.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB/GFIplay.mwb.bak" afterPath="$PROJECT_DIR$/DB/GFIplay.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB/gfiplay.sql" afterPath="$PROJECT_DIR$/DB/gfiplay.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/adminController.class.php" afterPath="$PROJECT_DIR$/controllers/adminController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/ajaxController.class.php" afterPath="$PROJECT_DIR$/controllers/ajaxController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/Controller.class.php" afterPath="$PROJECT_DIR$/controllers/Controller.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/indexController.class.php" afterPath="$PROJECT_DIR$/controllers/indexController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/build/app.bundle.js" afterPath="$PROJECT_DIR$/dist/build/app.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/script.js" afterPath="$PROJECT_DIR$/src/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/formulaire_connexion.php" afterPath="$PROJECT_DIR$/views/formulaire_connexion.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,19 +26,21 @@
             <state relative-caret-position="255">
               <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding>
-                <marker date="1493217633665" expanded="true" signature="1576:1823" ph="..." />
-                <marker date="1493217633665" expanded="true" signature="2315:2497" ph="..." />
+                <marker date="1493219627531" expanded="true" signature="1576:1823" ph="..." />
+                <marker date="1493219627531" expanded="true" signature="2315:2497" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="103" column="25" lean-forward="false" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="742">
+              <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+              <folding>
+                <marker date="1493219647618" expanded="true" signature="3754:3779" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,31 +59,34 @@
         <entry file="file://$PROJECT_DIR$/controllers/indexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+              <caret line="22" column="70" lean-forward="false" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/Controller.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+            <state relative-caret-position="450">
+              <caret line="57" column="49" lean-forward="true" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
               <folding>
-                <marker date="1493219014861" expanded="true" signature="825:885" ph="SELECT * FRO... user" />
-                <marker date="1493219014861" expanded="true" signature="1154:1383" ph="INSERT INTO user... " />
-                <marker date="1493219014861" expanded="true" signature="1154:1387" ph="INSERT INTO user... " />
-                <marker date="1493219014861" expanded="true" signature="1154:1395" ph="INSERT INTO user... " />
-                <marker date="1493219014861" expanded="true" signature="1799:1829" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="1799:1842" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="1799:1843" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="1799:1866" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="1888:1955" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="1977:2043" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="2065:2131" ph="INSERT INTO user_skills... " />
-                <marker date="1493219014861" expanded="true" signature="2568:2601" ph="SELECT * FRO... skills" />
-                <marker date="1493219014861" expanded="true" signature="2866:2899" ph="SELECT * FRO... skills" />
+                <marker date="1493220568142" expanded="true" signature="829:861" ph="SELECT * FRO... user" />
+                <marker date="1493220568142" expanded="true" signature="829:892" ph="SELECT * FRO... user" />
+                <marker date="1493220568142" expanded="true" signature="829:893" ph="SELECT * FRO... user" />
+                <marker date="1493220568142" expanded="true" signature="829:910" ph="SELECT * FRO... user" />
+                <marker date="1493220568142" expanded="true" signature="1189:1418" ph="INSERT INTO user... " />
+                <marker date="1493220568142" expanded="true" signature="1189:1422" ph="INSERT INTO user... " />
+                <marker date="1493220568142" expanded="true" signature="1189:1430" ph="INSERT INTO user... " />
+                <marker date="1493220568142" expanded="true" signature="1834:1864" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="1834:1877" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="1834:1878" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="1834:1901" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="1923:1990" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="2012:2078" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="2100:2166" ph="INSERT INTO user_skills... " />
+                <marker date="1493220568142" expanded="true" signature="2603:2636" ph="SELECT * FRO... skills" />
+                <marker date="1493220568142" expanded="true" signature="2901:2934" ph="SELECT * FRO... skills" />
               </folding>
             </state>
           </provider>
@@ -100,8 +95,8 @@
       <file leaf-file-name="formulaire_connexion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/formulaire_connexion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+            <state relative-caret-position="0">
+              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -119,9 +114,9 @@
         <option value="$PROJECT_DIR$/views/homeView.php" />
         <option value="$PROJECT_DIR$/views/formulaire_inscription.php" />
         <option value="$PROJECT_DIR$/src/js/script.js" />
-        <option value="$PROJECT_DIR$/controllers/Controller.class.php" />
-        <option value="$PROJECT_DIR$/controllers/indexController.class.php" />
         <option value="$PROJECT_DIR$/views/formulaire_connexion.php" />
+        <option value="$PROJECT_DIR$/controllers/indexController.class.php" />
+        <option value="$PROJECT_DIR$/controllers/Controller.class.php" />
       </list>
     </option>
   </component>
@@ -306,12 +301,12 @@
       <option name="presentableId" value="Default" />
       <updated>1493131462189</updated>
       <workItem from="1493131463680" duration="84000" />
-      <workItem from="1493202337065" duration="13458000" />
+      <workItem from="1493202337065" duration="14818000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13542000" />
+    <option name="totallyTimeSpent" value="14902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -373,19 +368,22 @@
         <state relative-caret-position="918">
           <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
           <folding>
-            <marker date="1493219014861" expanded="true" signature="825:885" ph="SELECT * FRO... user" />
-            <marker date="1493219014861" expanded="true" signature="1154:1383" ph="INSERT INTO user... " />
-            <marker date="1493219014861" expanded="true" signature="1154:1387" ph="INSERT INTO user... " />
-            <marker date="1493219014861" expanded="true" signature="1154:1395" ph="INSERT INTO user... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1829" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1842" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1843" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1866" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1888:1955" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1977:2043" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="2065:2131" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="2568:2601" ph="SELECT * FRO... skills" />
-            <marker date="1493219014861" expanded="true" signature="2866:2899" ph="SELECT * FRO... skills" />
+            <marker date="1493220568142" expanded="true" signature="829:861" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="829:892" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="829:893" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="829:910" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="1189:1418" ph="INSERT INTO user... " />
+            <marker date="1493220568142" expanded="true" signature="1189:1422" ph="INSERT INTO user... " />
+            <marker date="1493220568142" expanded="true" signature="1189:1430" ph="INSERT INTO user... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1864" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1877" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1878" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1901" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1923:1990" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="2012:2078" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="2100:2166" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="2603:2636" ph="SELECT * FRO... skills" />
+            <marker date="1493220568142" expanded="true" signature="2901:2934" ph="SELECT * FRO... skills" />
           </folding>
         </state>
       </provider>
@@ -422,43 +420,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="124" column="25" lean-forward="false" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+          <folding>
+            <marker date="1493219647618" expanded="true" signature="3754:3779" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/formulaire_inscription.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
-            <marker date="1493217633665" expanded="true" signature="1576:1823" ph="..." />
-            <marker date="1493217633665" expanded="true" signature="2315:2497" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/Controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-          <folding>
-            <marker date="1493219014861" expanded="true" signature="825:885" ph="SELECT * FRO... user" />
-            <marker date="1493219014861" expanded="true" signature="1154:1383" ph="INSERT INTO user... " />
-            <marker date="1493219014861" expanded="true" signature="1154:1387" ph="INSERT INTO user... " />
-            <marker date="1493219014861" expanded="true" signature="1154:1395" ph="INSERT INTO user... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1829" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1842" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1843" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1799:1866" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1888:1955" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="1977:2043" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="2065:2131" ph="INSERT INTO user_skills... " />
-            <marker date="1493219014861" expanded="true" signature="2568:2601" ph="SELECT * FRO... skills" />
-            <marker date="1493219014861" expanded="true" signature="2866:2899" ph="SELECT * FRO... skills" />
+            <marker date="1493219627531" expanded="true" signature="1576:1823" ph="..." />
+            <marker date="1493219627531" expanded="true" signature="2315:2497" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/formulaire_connexion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+        <state relative-caret-position="0">
+          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -466,16 +452,33 @@
     <entry file="file://$PROJECT_DIR$/controllers/indexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <caret line="22" column="70" lean-forward="false" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/script.js">
+    <entry file="file://$PROJECT_DIR$/controllers/Controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="103" column="25" lean-forward="false" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="450">
+          <caret line="57" column="49" lean-forward="true" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+          <folding>
+            <marker date="1493220568142" expanded="true" signature="829:861" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="829:892" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="829:893" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="829:910" ph="SELECT * FRO... user" />
+            <marker date="1493220568142" expanded="true" signature="1189:1418" ph="INSERT INTO user... " />
+            <marker date="1493220568142" expanded="true" signature="1189:1422" ph="INSERT INTO user... " />
+            <marker date="1493220568142" expanded="true" signature="1189:1430" ph="INSERT INTO user... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1864" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1877" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1878" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1834:1901" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="1923:1990" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="2012:2078" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="2100:2166" ph="INSERT INTO user_skills... " />
+            <marker date="1493220568142" expanded="true" signature="2603:2636" ph="SELECT * FRO... skills" />
+            <marker date="1493220568142" expanded="true" signature="2901:2934" ph="SELECT * FRO... skills" />
+          </folding>
         </state>
       </provider>
     </entry>

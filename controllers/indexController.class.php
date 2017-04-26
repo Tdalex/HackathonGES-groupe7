@@ -19,7 +19,9 @@ class indexController{
 		//$v = new view("formulaire_inscription");
 		//$v->assign("qualities", $qualities);
 		//$v->assign("defaults", $defaults);
-        if(isset($_REQUEST) && !empty($_POST))
+        if(isset($_REQUEST) && !empty($_POST)){
+            controller::connectUser($_POST['mail'], md5($_POST['mdp']));
+        }
 
         $v = new view("formulaire_connexion");
 

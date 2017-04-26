@@ -34,10 +34,11 @@ abstract class controller{
 	
     public static function connectUser($email, $password){
         $dbh = self::dbConnect();
-        $password = md5($password);
-        $sth = $dbh->prepare('SELECT * FROM user WHERE email = '. $email .' && password = ' . $password);
-        $sth ->execute();
-        return $sth->fetch();
+        var_dump($email.' '.$password);
+        $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
+        $res = $sth ->execute();
+        var_dump($res);
+        return true;
     }
 
     public static function saveUser($request){
