@@ -13,8 +13,43 @@ function addRecord(action) {
 		name:             $("#name").val(),
     }, function (data, status) {
         // close the popup
-console.log(data);
         $("#add_new_record_modal").modal("hide");
+
+        // read records again
+        readRecords(action);
+    });
+}
+
+function addRecordQCM(action) {
+    // Add record
+    $.post("ajax/addRecord/", {
+		action:           action,
+		type:             'QCM',
+		job:              $("#QCM_form #job").val(),
+		wording:          $("#QCM_form #wording").val(),
+		text_answer:      $.map($("#QCM_form .text_answer"), function (el) { return el.value; }),
+		is_answer:        $.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }),
+    }, function (data, status) {
+        // close the popup
+        $("#add_new_QCM_question").modal("hide");
+
+        // read records again
+        readRecords(action);
+    });
+}
+
+function addRecordOpen(action) {
+    // Add record
+    $.post("ajax/addRecord/", {
+		action:           action,
+		type:             'open',
+		job:              $("#open_form #job").val(),
+		wording:          $("#open_form #wording").val(),
+		answer:           $("#open_form #answer").val(),
+    }, function (data, status) {
+        // close the popup
+		console.log(data);
+        $("#add_new_opened_question").modal("hide");
 
         // read records again
         readRecords(action);
@@ -94,6 +129,13 @@ $(document).on('click', '.getdetail', function() {
 
 $(document).on('click', '.addRecord', function() {
 	addRecord($(this).data('type'));
+});
+
+$(document).on('click', '.addRecordQCM', function() {
+	addRecordQCM($(this).data('type'));
+});
+$(document).on('click', '.addRecordOpen', function() {
+	addRecordOpen($(this).data('type'));
 });
 
 $(document).on('click', '.deleteRecord', function() {
