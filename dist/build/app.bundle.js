@@ -142,8 +142,20 @@ $(document).on('click', '.deleteRecord', function() {
 	deleteRecord($(this).data('type'), $(this).data('id'));
 });
 
+function HideShowStepSignIn() {
+    $("#s1_next").click(function() { $("#step1").hide(); $("#step2").show(); });
+    $("#s2_prev").click(function() { $("#step1").show(); $("#step2").hide(); });
+    $("#s2_next").click(function() { $("#step2").hide(); $("#step3").show(); });
+    $("#s3_prev").click(function() { $("#step2").show(); $("#step3").hide(); });
+}
+
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
 		readRecords($('.CRUD').data('type')); // calling function
+    // READ recods on page load
+    $("#step1").show();
+    $("#step2").hide();
+    $("#step3").hide();
+    HideShowStepSignIn();
 });
 },{}]},{},[1])
