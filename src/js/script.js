@@ -1,68 +1,61 @@
 // Add Record
-function addRecord() {
-    // get values
-    var first_name = $("#first_name").val();
-    var last_name = $("#last_name").val();
-    var email = $("#email").val();
-
+function addRecord(action) {
     // Add record
-    $.post("ajax/addRecord.php", {
-        first_name: first_name,
-        last_name: last_name,
-        email: email
+    $.post("ajax/addRecord/", {
+		action:           action,
+		quantity:         $("#quantity").val(),
+		type:             $("#type").val(),
+		job:              $("#job").val(),
+		description:      $("#description").val(),
+		wording:          $("#wording").val(),
+		timeout:          $("#timeout").val(),
+		name:             $("#name").val(),
     }, function (data, status) {
         // close the popup
+console.log(data);
         $("#add_new_record_modal").modal("hide");
 
         // read records again
-        readRecords();
-
-        // clear fields from the popup
-        $("#first_name").val("");
-        $("#last_name").val("");
-        $("#email").val("");
+        readRecords(action);
     });
 }
 
 // READ records
-function readRecords() {
-
-    $.post('ajax/candidate/', {
-		action: 'get',
+function readRecords(type) {
+    $.post('ajax/getRecord/', {
+		action: type,
 	}, function (data, status) {
-		console.log()
         $(".records_content").html(data);
     });
 }
 
 
-function DeleteUser(id) {
-    var conf = confirm("Are you sure, do you really want to delete User?");
+function deleteRecord(type, id) {
+    var conf = confirm("Voulez vous vraiment supprimer cet element ?");
     if (conf == true) {
-        $.post("ajax/deleteUser.php", {
-                id: id
+        $.post("ajax/deleteRecord", {
+                id:   id,
+				type: type
             },
             function (data, status) {
-                // reload Users by using readRecords();
-                readRecords();
+                // reload by using readRecords();
+                readRecords(type);
             }
         );
     }
 }
 
-function GetUserDetails(id) {
+function GetDetails(type, id) {
     // Add User ID to the hidden field for furture usage
     $("#hidden_user_id").val(id);
-    $.post("ajax/readUserDetails.php", {
+    $.post("ajax/getDetails/", {
+			type: type,
             id: id
         },
         function (data, status) {
             // PARSE json data
             var user = JSON.parse(data);
-            // Assing existing values to the modal popup fields
-            $("#update_first_name").val(user.first_name);
-            $("#update_last_name").val(user.last_name);
-            $("#update_email").val(user.email);
+			$(".detail_content").html(data);
         }
     );
     // Open modal popup
@@ -94,6 +87,18 @@ function UpdateUserDetails() {
     );
 }
 
+$(document).on('click', '.getdetail', function() {
+	GetDetails($(this).data('type'), $(this).data('id'));
+});
+
+$(document).on('click', '.addRecord', function() {
+	addRecord($(this).data('type'));
+});
+
+$(document).on('click', '.deleteRecord', function() {
+	deleteRecord($(this).data('type'), $(this).data('id'));
+});
+
 function HideShowStepSignIn() {
     $("#s1_next").click(function() { $("#step1").hide(); $("#step2").show(); });
     $("#s2_prev").click(function() { $("#step1").show(); $("#step2").hide(); });
@@ -102,8 +107,9 @@ function HideShowStepSignIn() {
 }
 
 $(document).ready(function () {
+	if($('.CRUD').length > 0)
+		readRecords($('.CRUD').data('type')); // calling function
     // READ recods on page load
-    readRecords(); // calling function
     $("#step1").show();
     $("#step2").hide();
     $("#step3").hide();

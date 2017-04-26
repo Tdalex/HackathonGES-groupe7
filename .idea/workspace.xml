@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bff3293-156d-4a67-a0f6-526c6118aa96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/formulaire_connexion.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/formulaire_inscription.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stylesheets/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/views/homeView.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/Controller.class.php" afterPath="$PROJECT_DIR$/controllers/Controller.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/adminView.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/modal/addCaracteres.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/modal/addPostes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/modal/addQuestions.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/adminCandidateView.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/adminSkillsView.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB/GFIplay.mwb" afterPath="$PROJECT_DIR$/DB/GFIplay.mwb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB/GFIplay.mwb.bak" afterPath="$PROJECT_DIR$/DB/GFIplay.mwb.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB/gfiplay.sql" afterPath="$PROJECT_DIR$/DB/gfiplay.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/adminController.class.php" afterPath="$PROJECT_DIR$/controllers/adminController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/ajaxController.class.php" afterPath="$PROJECT_DIR$/controllers/ajaxController.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/indexController.class.php" afterPath="$PROJECT_DIR$/controllers/indexController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/view.class.php" afterPath="$PROJECT_DIR$/core/view.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/build/app.bundle.js" afterPath="$PROJECT_DIR$/dist/build/app.bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/script.js" afterPath="$PROJECT_DIR$/src/js/script.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/views/formulaire_inscription.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+              <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding>
                 <marker date="1493217633665" expanded="true" signature="1576:1823" ph="..." />
                 <marker date="1493217633665" expanded="true" signature="2315:2497" ph="..." />
@@ -38,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="109" column="25" lean-forward="true" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+            <state relative-caret-position="385">
+              <caret line="103" column="25" lean-forward="false" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -61,8 +66,8 @@
       <file leaf-file-name="indexController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/indexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="374">
+              <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -92,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulaire_connexion.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="formulaire_connexion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/formulaire_connexion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+            <state relative-caret-position="51">
+              <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -301,12 +306,12 @@
       <option name="presentableId" value="Default" />
       <updated>1493131462189</updated>
       <workItem from="1493131463680" duration="84000" />
-      <workItem from="1493202337065" duration="13246000" />
+      <workItem from="1493202337065" duration="13458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13330000" />
+    <option name="totallyTimeSpent" value="13542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -417,18 +422,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="109" column="25" lean-forward="true" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/formulaire_inscription.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <marker date="1493217633665" expanded="true" signature="1576:1823" ph="..." />
             <marker date="1493217633665" expanded="true" signature="2315:2497" ph="..." />
@@ -458,18 +455,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/indexController.class.php">
+    <entry file="file://$PROJECT_DIR$/views/formulaire_connexion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+        <state relative-caret-position="51">
+          <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/formulaire_connexion.php">
+    <entry file="file://$PROJECT_DIR$/controllers/indexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+        <state relative-caret-position="374">
+          <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="103" column="25" lean-forward="false" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
           <folding />
         </state>
       </provider>

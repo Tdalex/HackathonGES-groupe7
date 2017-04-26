@@ -11,51 +11,236 @@ class ajaxController{
 		controller::redirect();
 	}
 	
-	public function candidateAction($request){
+	public function addRecordAction($request){
 		if(isset($_POST['action']) && !empty($_POST['action'])) {
-			$data = '<table class="table table-bordered table-striped">
-							<tr>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Email Address</th>
-								<th>Update</th>
-								<th>Delete</th>
+			$dbh = controller::dbConnect();
+			switch($_POST['action']){
+				case 'Questions':
+					$sth = $dbh->prepare('INSERT INTO question (Name,Quantity,Timeout,Description) VALUES("'.$_POST['name'].'","'.$_POST['quantity'].'","'.$_POST['timeout'].'","'.$_POST['description'].'")');		
+					$sth->execute();
+					break;
+	
+				case 'Postes':				
+					$sth = $dbh->prepare('INSERT INTO jobapplication (Name,Quantity,Timeout,Description) VALUES("'.$_POST['name'].'","'.$_POST['quantity'].'","'.$_POST['timeout'].'","'.$_POST['description'].'")');		
+					$sth->execute();
+					break;
+
+				case 'Caracteres':
+					$sth = $dbh->prepare('INSERT INTO skills (Name,Quantity,Timeout,Description) VALUES("'.$_POST['name'].'","'.$_POST['quantity'].'","'.$_POST['timeout'].'","'.$_POST['description'].'")');		
+					$sth->execute();
+					break;
+			}
+		}
+	}
+
+	public function getRecordAction($request){
+		if(isset($_POST['action']) && !empty($_POST['action'])) {
+			switch($_POST['action']){
+				case 'Candidats':
+					$data = '<table class="table table-bordered table-striped">
+									<tr>
+										<th>Nom</th>
+										<th>Email</th>
+										<th>Detail</th>
+									</tr>';
+
+					$query = "SELECT * FROM user where role != 'admin'";
+					$query = "SELECT * FROM user";
+
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetchAll();
+					// if query results contains rows then featch those rows 
+					if(!empty($results))
+					{
+						foreach($results as $result)
+						{
+							$data .= '<tr>
+								<td>'.$result['Surname'] . ' ' . $result['Name'].'</td>
+								<td>'.$result['Email'].'</td>
+								<td>
+									<button data-type="user" data-id="'.$result['IdUser'].'" class="getdetail btn btn-warning">Detail</button>
+								</td>
 							</tr>';
+						}
+					}
+					else
+					{
+						// records now found 
+						$data = '<tr><td colspan="6">Aucun candidat trouvé</td></tr>';
+					}
 
-			$query = "SELECT * FROM candidates";
+					$data .= '</table>';
+					break;
 
+				case 'Postes':
+					$data = '<table class="table table-bordered table-striped">
+									<tr>
+										<th>Nom</th>
+										<th>Durée avant nouvel essai</th>
+										<th>Quantité disponible</th>
+										<th>Modifier</th>
+										<th>Supprimer</th>
+									</tr>';
+
+					$query = "SELECT * FROM JobApplication";
+
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetchAll();
+					// if query results contains rows then featch those rows 
+					if(!empty($results))
+					{
+						foreach($results as $result)
+						{
+							$data .= '<tr>
+								<td>'.$result['Name'].'</td>
+								<td>'.$result['Timeout'].' jours</td>
+								<td>'.$result['Quantity'].'</td>
+								<td>
+									<button data-type="Postes" data-id="'.$result['IdJobApplication'].'" class="getdetail btn btn-warning">Detail</button>
+								</td>
+								<td>
+									<button data-type="Postes" data-id="'.$result['IdJobApplication'].'" class="deleteRecord btn btn-danger">Supprimer</button>
+								</td>
+							</tr>';
+						}
+					}
+					else
+					{
+						// records now found 
+						$data = '<tr><td colspan="6">Aucun poste trouvé</td></tr>';
+					}
+
+					$data .= '</table>';
+					break;
+				
+				case 'Caracteres':
+					$data = '<table class="table table-bordered table-striped">
+									<tr>
+										<th>Nom</th>
+										<th>Type</th>
+										<th>Modifer</th>
+										<th>Supprimer</th>
+									</tr>';
+
+					$query = "SELECT * FROM Skills";
+
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetchAll();
+
+					// if query results contains rows then featch those rows 
+					if(!empty($results))
+					{
+						foreach($results as $result)
+						{
+							$data .= '<tr>
+								<td>'.$result['Name'].'</td>
+								<td>'.$result['Type'].'</td>
+								<td>
+									<button data-type="Caractere" data-id="'.$result['IdSkills'].'" class="update btn btn-warning">Detail</button>
+								</td>
+								<td>
+									<button data-type="Caractere" data-id="'.$result['IdSkills'].'" class="deleteRecord btn btn-danger">Supprimer</button>
+								</td>
+							</tr>';
+						}
+					}
+					else
+					{
+						// records now found 
+						$data = '<tr><td colspan="6">Aucune question trouvée</td></tr>';
+					}
+
+					$data .= '</table>';
+					break;
+				case 'Questions':
+					$data = '<table class="table table-bordered table-striped">
+									<tr>
+										<th>Enoncé</th>
+										<th>Type</th>
+										<th>Poste</th>
+										<th>Modifer</th>
+										<th>Supprimer</th>
+									</tr>';
+
+					$query = "SELECT * FROM Question INNER JOIN JobApplication ON Question.IdJobApplication = JobApplication.IdJobApplication";
+
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetchAll();
+
+					// if query results contains rows then featch those rows 
+					if(!empty($results))
+					{
+						foreach($results as $result)
+						{
+							$data .= '<tr>
+								<td>'.$result['Wording'].'</td>
+								<td>'.$result['Type'].'</td>
+								<td>'.$result['Name'].'</td>
+								<td>
+									<button data-type="Question" data-id="'.$result['IdQuestion'].'" class="update btn btn-warning">Detail</button>
+								</td>
+								<td>
+									<button data-type="Question" data-id="'.$result['IdQuestion'].'" class="deleteRecord btn btn-danger">Supprimer</button>
+								</td>
+							</tr>';
+						}
+					}
+					else
+					{
+						// records now found 
+						$data = '<tr><td colspan="6">Aucune question trouvée</td></tr>';
+					}
+
+					$data .= '</table>';
+					break;
+
+				default:
+					$data = 'wrong type';
+					break;
+					
+			}
+		}else{
+			$data = 'error';
+		}
+		echo $data;
+	}
+	
+	public function getDetailsAction($request){
+		if(isset($_POST['id']) && isset($_POST['id']) != ""){
+			// get ID and type
+			$id   = $_POST['id'];
+			$from = $_POST['type'];
+
+			// get Details
+			$query = "SELECT * FROM user WHERE IdUser = ".$id;
 			$dbh = controller::dbConnect();
 			$sth = $dbh->prepare($query);
 			$sth->execute();
-			$candidates = $sth->fetchAll();
-
-			// if query results contains rows then featch those rows 
-			if($candidates !== null)
-			{
-				foreach($candidates as $candidate)
-				{
-					$data .= '<tr>
-						<td>'.$candidate['first_name'].'</td>
-						<td>'.$candidate['last_name'].'</td>
-						<td>'.$candidate['email'].'</td>
-						<td>
-							<button onclick="GetCandidateDetails('.$candidate['id'].')" class="btn btn-warning">Update</button>
-						</td>
-						<td>
-							<button onclick="CandidateUser('.$candidate['id'].')" class="btn btn-danger">Delete</button>
-						</td>
-					</tr>';
-				}
+			$results = $sth->fetch();
+			
+			$response = array();
+			
+			if($results){
+				$response = $results;
+			}else{
+				$response['status'] = 200;
+				$response['message'] = "Data not found!";
 			}
-			else
-			{
-				// records now found 
-				$data .= '<tr><td colspan="6">Aucun candidat trouvé</td></tr>';
-			}
-
-			$data .= '</table>';
-
-			echo $data;
+			// display JSON data
+			echo json_encode($response);
+		}
+		else
+		{
+			$response['status'] = 200;
+			$response['message'] = "Invalid Request!";
 		}
 	}
 }
