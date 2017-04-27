@@ -2,6 +2,7 @@
 <div class="home-container align">
   <div class="home-body col-md-3 animated fadeInLeft">
     <img class="home-logo" src="/src/img/home-logo.png">
+	<a id="connexion">Connexion</a>
 
     <!-- Formulaire -->
     <form action="" method="post" id="form_connexion">
@@ -22,7 +23,7 @@
 
     <div class="gfi-body-footer">
       <span class="home-cgu-link">CGU</span>
-      <span class="home-subscribe-link">S'inscrire</span>
+      <span id="inscription" class="home-subscribe-link">S'inscrire</span>
     </div>
   </div>
 </div>
