@@ -1,6 +1,6 @@
 <?php
 
-require('Controller.class.php');
+require('controller.class.php');
 
 class indexController{
 
@@ -10,7 +10,7 @@ class indexController{
 	public function indexAction($request){
 		if(isset($_SESSION['id_user']))
 			return controller::redirect('/gfiPlay');
-		
+
         //si le formulaire a bien été rempli
         if(isset($_REQUEST)&& !empty($_POST)){
               //enregistre l'utilisateur

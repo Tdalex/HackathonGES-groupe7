@@ -37,7 +37,7 @@ abstract class Controller{
         $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
         $sth->execute();
 		$res = $sth->fetch();
-		
+
         $sth = $dbh->prepare('SELECT * FROM game WHERE IdUser = '. $res['IdUser']);
         $sth->execute();
 		$game = $sth->fetch();
@@ -47,7 +47,7 @@ abstract class Controller{
 			$_SESSION['last_question']  = $game['LastQuestion'];
 			$_SESSION['score']  		= $game['Score'];
 		}
-	
+
         $_SESSION['id_user']      = $res['IdUser'];
         $_SESSION['name_user']    = $res['Name'];
         $_SESSION['surname_user'] = $res['Surname'];

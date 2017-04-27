@@ -1,6 +1,6 @@
 <?php
 
-require('Controller.class.php');
+require('controller.class.php');
 
 class adminController{
 
