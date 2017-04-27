@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `gfiplay`.`User` (
   `Role` VARCHAR(45) NULL,
   `Password` VARCHAR(255) NOT NULL,
   `Gender` TINYINT NULL,
+  `Competence` VARCHAR(45) NULL,
   PRIMARY KEY (`IdUser`),
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC))
 ENGINE = InnoDB;

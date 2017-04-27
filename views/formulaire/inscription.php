@@ -44,11 +44,16 @@
             ?>
         </select>
         <h1>Compétence</h1>
-        <!--a compléter-->
+        <select name="competence" id="competence">
+            <option value="protection">Protection</option>
+            <option value="separation">Séparation</option>
+            <option value="enchainement">Enchainement</option>
+            <option value="confiance">Confiance</option>
+        </select><br/>
         <button id="s2_prev" type="button">Précédent</button><button id="s2_next" type="button">Suivant</button>
     </div>
     <div id="step3">
-        <!-- choix de l'avatar -->
+        <!-- Avatar -->
         <input type="submit" name="valider" id="valider" value="Valider">
         <button id="s3_prev" type="button">Précédent</button>
     </div>
