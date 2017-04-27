@@ -26,6 +26,10 @@ class indexController{
 		$v->assign("defaults", $defaults);
 
 	}
+	
+	public function gfiPlayAction($request){
+		$v = new view("gameView");
+	}
 
 	public function homeAction($request){
 		echo "home";
