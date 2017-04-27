@@ -1,6 +1,6 @@
 <?php
 
-require('controller.class.php');
+require('Controller.class.php');
 
 class indexController{
 
@@ -29,7 +29,7 @@ class indexController{
 		$v->assign("defaults", $defaults);
 
 	}
-	
+
 	public function gfiPlayAction($request){
 		$v = new view("gameView");
 	}
@@ -38,6 +38,6 @@ class indexController{
 		session_destroy();
 		return controller::redirect();
 	}
-	
+
 
 }
