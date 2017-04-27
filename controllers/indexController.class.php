@@ -31,8 +31,10 @@ class indexController{
 		$v = new view("gameView");
 	}
 
-	public function homeAction($request){
-		echo "home";
+	public function logoutAction($request){
+		session_destroy();
+		return controller::redirect();
 	}
+	
 
 }

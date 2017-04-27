@@ -35,10 +35,12 @@ abstract class controller{
     public static function connectUser($email, $password){
         $dbh = self::dbConnect();
         $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
-        $res = $sth ->execute();
+        $sth->execute();
+		$res = $sth->fetch();
 		
         $sth = $dbh->prepare('SELECT IdJobApplication FROM game WHERE IdCandidate = '. $res['IdUser']);
-        $game = $sth ->execute();
+        $sth->execute();
+		$game = $sth->fetch();
 		if($game)
 			$_SESSION['id_game'] = $game;
 		

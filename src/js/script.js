@@ -162,6 +162,9 @@ function HideShowStepSignUp() {
 
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
+		readRecords($('.CRUD').data('type')); 	
+	
+	if($('.CRUD').length > 0)
 		readRecords($('.CRUD').data('type')); 
 	
     $("#step1").show();
