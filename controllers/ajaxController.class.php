@@ -245,7 +245,7 @@ class ajaxController{
 					else
 					{
 						// records now found 
-						$data = '<tr><td colspan="6">Aucune question trouvée</td></tr>';
+						$data = '<tr><td colspan="6">Aucun caracteres trouvé</td></tr>';
 					}
 
 					$data .= '</table>';

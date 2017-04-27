@@ -8,15 +8,11 @@ class gfiPlayController{
 	}
 
 	public function indexAction($request){
-		$_SESSION['id_user']      = 1;
-		$_SESSION['name_user']    = 'toto';
-		$_SESSION['surname_user'] = 'tata';
-		$_SESSION['email_user']   = 'test@test.com';
 		if(!isset($_SESSION['id_user']))
 			controller::redirect();
 		
 		$availableJobs = controller::getAvailbleJobs();
-		$v = new view("gameView");
+		$v = new view("gameHomeView");
 		$v->assign("availableJobs", $availableJobs);
 	}
 	
@@ -24,8 +20,20 @@ class gfiPlayController{
 		if(!isset($_SESSION['id_user']))
 			controller::redirect();
 		
-		$availableJobs = controller::getAvailbleJobs();
-		$v = new view("gameView");
-		$v->assign("availableJobs", $availableJobs);
+		
+		$dbh = controller::dbConnect();
+		$sth = $dbh->prepare('INSERT INTO Game (Last_play, IdJobApplication, IdUser) VALUES(now(), "'.$_POST['job'].'","'.$_SESSION['id_user'].'")');		
+		$sth->execute();
+		
+		$_SESSION['id_game'] = $dbh->lastInsertId();
+		
+		return controller::redirect('/gfiPlay/play');
+	}
+	
+	public function playAction($request){
+		if(!isset($_SESSION['id_user']) && !isset($_SESSION['id_game']))
+			controller::redirect('/gfiPlay');
+		
+		$v = new view("playView");
 	}
 }

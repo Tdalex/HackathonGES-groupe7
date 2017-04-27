@@ -36,9 +36,14 @@ abstract class controller{
         $dbh = self::dbConnect();
         $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
         $res = $sth ->execute();
-
-        $_SESSION['id_user'] = $res['IdUser'];
-        $_SESSION['name_user'] = $res['Name'];
+		
+        $sth = $dbh->prepare('SELECT IdJobApplication FROM game WHERE IdCandidate = '. $res['IdUser']);
+        $game = $sth ->execute();
+		if($game)
+			$_SESSION['id_game'] = $game;
+		
+        $_SESSION['id_user']      = $res['IdUser'];
+        $_SESSION['name_user']    = $res['Name'];
         $_SESSION['surname_user'] = $res['Surname'];
         $_SESSION['email_user'] = $res['Email'];
         return self::redirect("/gfiPlay");
