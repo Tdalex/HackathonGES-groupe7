@@ -1,0 +1,51 @@
+.home-container {
+  background: url('/src/img/home-bg.png') no-repeat left bottom fixed;
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+
+  .home-body{
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 3px;
+    position: relative;
+    padding-top: 180px;
+
+    .home-subscribe-link {
+      float: right;
+    }
+
+    .home-cgu-link {
+      float: left;
+    }
+
+    .home-input {
+      margin: 15px 10px;
+    }
+
+    .home-logo {
+      display:block;
+      height: 300px;
+      margin: 0 auto;
+      text-align: center;
+      position: absolute;
+      top: -110px;
+      left: 0;
+      right: 0;
+    }
+
+    .home-btn {
+      margin: 15px 0 10px 0;
+    }
+
+    .home-punchline {
+      display: block;
+      font-size: 35px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      margin: 5px 0 15px 0;
+    }
+  }
+}

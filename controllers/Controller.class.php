@@ -1,8 +1,8 @@
 <?php
 
 
-abstract class controller{
-	
+abstract class Controller{
+
 
 	public function __construct(){
 	}
@@ -11,7 +11,7 @@ abstract class controller{
 		if($location == 'home'){
 			$location = serverUrl;
 		}elseif(substr($location, 0, 4) != 'http'){
-			$location = serverUrl . $location;			
+			$location = serverUrl . $location;
 		}
 
 		return header('Location:'. $location);
@@ -24,26 +24,29 @@ abstract class controller{
 			}else{
 				$dbh = new PDO('mysql:host=localhost;dbname=gfiplay', 'root');
 			}
-			
+
 			return $dbh;
 		} catch (PDOException $e) {
 			print "Erreur !: " . $e->getMessage() . "<br/>";
 			die();
 		}
 	}
-	
+
     public static function connectUser($email, $password){
         $dbh = self::dbConnect();
         $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
         $sth->execute();
 		$res = $sth->fetch();
 		
-        $sth = $dbh->prepare('SELECT IdJobApplication FROM game WHERE IdCandidate = '. $res['IdUser']);
+        $sth = $dbh->prepare('SELECT * FROM game WHERE IdCandidate = '. $res['IdUser']);
         $sth->execute();
 		$game = $sth->fetch();
-		if($game)
-			$_SESSION['id_game'] = $game;
-		
+		if($game){
+			$_SESSION['id_game'] = $game['IdGame'];
+			$_SESSION['id_job']  = $game['IdJobApplication'];
+			$_SESSION['last_question']  = $game['Last_question'];
+		}
+	
         $_SESSION['id_user']      = $res['IdUser'];
         $_SESSION['name_user']    = $res['Name'];
         $_SESSION['surname_user'] = $res['Surname'];

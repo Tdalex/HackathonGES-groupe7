@@ -1,6 +1,6 @@
 <?php
 
-require('controller.class.php');
+require('Controller.class.php');
 
 class indexController{
 
@@ -8,6 +8,9 @@ class indexController{
 	}
 
 	public function indexAction($request){
+		if(isset($_SESSION['id_user']))
+			return controller::redirect('/gfiPlay');
+		
         //si le formulaire a bien été rempli
         if(isset($_REQUEST)&& !empty($_POST)){
               //enregistre l'utilisateur
@@ -26,7 +29,7 @@ class indexController{
 		$v->assign("defaults", $defaults);
 
 	}
-	
+
 	public function gfiPlayAction($request){
 		$v = new view("gameView");
 	}
@@ -35,6 +38,6 @@ class indexController{
 		session_destroy();
 		return controller::redirect();
 	}
-	
+
 
 }

@@ -8,6 +8,7 @@
 	<script src="/dist/build/app.bundle.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="/dist/build/app.bundle.css">
+	<link rel="stylesheet" type="text/css" href="/dist/build/css/app.bundle.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 

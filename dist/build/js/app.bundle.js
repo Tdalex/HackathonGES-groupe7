@@ -1,3 +1,11 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+},{}]},{},[1])
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+console.log('lol');
+
+},{}]},{},[1])
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // Add Record
 function addRecord(action) {
     // Add record
@@ -65,8 +73,6 @@ function readRecords(type) {
 		action: type,
 	}, function (data, status) {
         $(".records_content").html(data);
-        showDatatable();
-
     });
 }
 
@@ -169,59 +175,6 @@ function HideShowStepSignUp() {
     $("#s3_prev").click(function() { $("#step2").show(); $("#step3").hide(); });
 }
 
-function showDatatable(){
-    $("#game").DataTable({
-        columns: [
-            { title: "Nom" },
-            { title: "Email" },
-            { title: "Poste" },
-            { title: "Score" },
-            { title: "Date" },
-            { title: "Terminé ?" },
-            { title: "Détail" }
-        ]
-    } );
-
-    $("#candidate").DataTable({
-        columns: [
-            { title: "Nom" },
-            { title: "Email" },
-            { title: "Détail" }
-        ]
-    });
-
-    $("#poste").DataTable({
-        columns: [
-            { title: "Nom" },
-            { title: "Durée avant nouvel essai" },
-            { title: "Quantité disponible" },
-            { title: "Modifier" },
-            { title: "Supprimer" }
-        ]
-    });
-
-    $("#skill").DataTable({
-        columns: [
-            { title: "Nom" },
-            { title: "Type" },
-            { title: "Modifier" },
-            { title: "Supprimer" }
-        ]
-    });
-
-    $("#question").DataTable(
-        {
-        columns: [
-            { title: "Enoncé" },
-            { title: "Type" },
-            { title: "Poste" },
-            { title: "Modifier" },
-            { title: "Supprimer" },
-        ]
-    }
-    );
-}
-
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
 		readRecords($('.CRUD').data('type')); 	
@@ -234,5 +187,5 @@ $(document).ready(function () {
     $("#step3").hide();
     HideShowStepSignUp();
     HideShowConnectSignUp();
-
 });
+},{}]},{},[1])

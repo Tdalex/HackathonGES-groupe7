@@ -1,0 +1,56 @@
+/** Button Overall **/
+.btn{
+  border-radius:0;
+  font-size:9px;
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing: 2px;
+  line-height:25px;
+  padding: 10px 20px !important;
+  color: white !important;
+}
+
+/** Button Custom **/
+.gfi-btn{
+  position:relative;
+  overflow:hidden;
+
+  .gfi-btn-span{
+    transition:all .3s;
+  }
+
+  .gfi-btn-span.firstspan{
+    display:block;
+    opacity:1;
+  }
+
+  .gfi-btn-span.secondspan{
+    position:absolute;
+    left:0;
+    right:0;
+    margin:0 auto;
+    opacity:0;
+    transform:translateY(100%);
+  }
+
+  &:hover{
+    .gfi-btn-span.firstspan{
+      transform:translateY(-100%);
+      opacity:0;
+    }
+
+    .gfi-btn-span.secondspan{
+      transform:translateY(-100%);
+      opacity:1;
+    }
+  }
+}
+
+.gfi-btn-primary{
+  background-color: #f8b400;
+  color:#ffffff;
+
+  &:hover{
+    color:#ffffff;
+  }
+}

@@ -1,6 +1,6 @@
 <?php
 
-require('controller.class.php');
+require('Controller.class.php');
 
 class adminController{
 
@@ -13,13 +13,13 @@ class adminController{
 		//check admin
 		if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin')
 			controller::redirect();
-		
+
 		$type  = 'Candidats';
 		$links = array('Candidats', 'Postes', 'Questions', 'Caracteres','Jeux');
-		
+
 		if(isset($_POST['type']))
 			$type = $_POST['type'];
-		
+
 		$links = array_diff($links, array($type));
 		$availableJobs = controller::getAvailbleJobs();
 
