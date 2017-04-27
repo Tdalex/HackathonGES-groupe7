@@ -1,9 +1,7 @@
-<div class="home-container align">
+
+<!-- <div class="home-container align">
   <div class="home-body col-md-3 animated fadeInLeft">
     <img class="home-logo" src="/src/img/home-logo.png">
-    <!-- <span class="home-punchline">
-      Incarnez votre avenir
-    </span> -->
     <div class="gfi-input home-input">
       <input type="text" class="gfi-input-text" required/>
       <span class="gfi-input-label">Prénom</span>
@@ -24,9 +22,10 @@
       <span class="home-cgu-link">CGU</span>
       <span class="home-subscribe-link">S'inscrire</span>
     </div>
-    <!-- <button class="btn gfi-btn gfi-btn-primary home-btn">
-    <span class="gfi-btn-span firstspan">S'inscrire</span>
-    <span class="gfi-btn-span secondspan">S'inscrire</span>
-  </button> -->
   </div>
-</div>
+</div> -->
+
+<a id="inscription">Inscription</a>
+<?php include("formulaire_inscription.php");?>
+<a id="connexion">Connexion</a>
+<?php include("formulaire_connexion.php");?>

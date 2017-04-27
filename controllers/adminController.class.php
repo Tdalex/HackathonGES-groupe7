@@ -15,7 +15,7 @@ class adminController{
 			controller::redirect();
 
 		$type  = 'Candidats';
-		$links = array('Candidats', 'Postes', 'Questions', 'Caracteres');
+		$links = array('Candidats', 'Postes', 'Questions', 'Caracteres','Jeux');
 
 		if(isset($_POST['type']))
 			$type = $_POST['type'];

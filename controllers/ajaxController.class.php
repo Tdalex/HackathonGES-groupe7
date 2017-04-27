@@ -49,10 +49,79 @@ class ajaxController{
 			}
 		}
 	}
+	
+	public function deleteRecordAction($request){
+		if(isset($_POST['type']) && !empty($_POST['type'])) {
+			$dbh = controller::dbConnect();
+			switch($_POST['type']){
+				case 'Questions':
+					$sth = $dbh->prepare('DELETE FROM question WHERE IdQuestion = '. $_POST['id']);		
+					$sth->execute();
+					
+					$sth = $dbh->prepare('DELETE FROM answer WHERE IdQuestion = '. $_POST['id']);		
+					$sth->execute();
+				break;
+	
+				case 'Postes':				
+					$sth = $dbh->prepare('DELETE FROM jobapplication WHERE IdJobApplication = '. $_POST['id']);
+					$sth->execute();
+					break;
+
+				case 'Caracteres':
+					$sth = $dbh->prepare('DELETE FROM skills WHERE IdSkills = '. $_POST['id']);		
+					$sth->execute();
+					break;
+			}
+		}
+	}
 
 	public function getRecordAction($request){
 		if(isset($_POST['action']) && !empty($_POST['action'])) {
 			switch($_POST['action']){
+				case 'Jeux':
+					$data = '<table class="table table-bordered table-striped">
+									<tr>
+										<th>Nom</th>
+										<th>Email</th>
+										<th>Poste</th>
+										<th>Score</th>
+										<th>Date</th>
+										<th>Termine ?</th>
+										<th>Detail</th>
+									</tr>';
+
+					$query = "SELECT * FROM game INNER JOIN candidate ON candidate.IdCandidate = candidate.IdCandidate";
+
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetchAll();
+					// if query results contains rows then featch those rows 
+					if(!empty($results))
+					{
+						foreach($results as $result)
+						{
+							$data .= '<tr>
+								<td>'.$result['Surname'] . ' ' . $result['Name'].'</td>
+								<td>'.$result['Email'].'</td>
+								<td>'.$result['Score'].'</td>
+								<td>'.$result['Last_play'].'</td>
+								<td>'.$result['is_finished'].'</td>
+								<td>
+									<button data-type="Jeux" data-id="'.$result['IdGame'].'" class="getdetail btn btn-warning">Detail</button>
+								</td>
+							</tr>';
+						}
+					}
+					else
+					{
+						// records now found 
+						$data = '<tr><td colspan="6">Aucun jeu trouvé</td></tr>';
+					}
+
+					$data .= '</table>';
+					break;
+					
 				case 'Candidats':
 					$data = '<table class="table table-bordered table-striped">
 									<tr>
@@ -77,7 +146,7 @@ class ajaxController{
 								<td>'.$result['Surname'] . ' ' . $result['Name'].'</td>
 								<td>'.$result['Email'].'</td>
 								<td>
-									<button data-type="user" data-id="'.$result['IdUser'].'" class="getdetail btn btn-warning">Detail</button>
+									<button data-type="Candidats" data-id="'.$result['IdUser'].'" class="getdetail btn btn-warning">Detail</button>
 								</td>
 							</tr>';
 						}
@@ -117,7 +186,7 @@ class ajaxController{
 								<td>'.$result['Timeout'].' jours</td>
 								<td>'.$result['Quantity'].'</td>
 								<td>
-									<button data-type="Postes" data-id="'.$result['IdJobApplication'].'" class="getdetail btn btn-warning">Detail</button>
+									<button data-type="Postes" data-id="'.$result['IdJobApplication'].'" class="getdetail btn btn-warning">Modifier</button>
 								</td>
 								<td>
 									<button data-type="Postes" data-id="'.$result['IdJobApplication'].'" class="deleteRecord btn btn-danger">Supprimer</button>
@@ -139,7 +208,7 @@ class ajaxController{
 									<tr>
 										<th>Nom</th>
 										<th>Type</th>
-										<th>Modifer</th>
+										<th>Modifier</th>
 										<th>Supprimer</th>
 									</tr>';
 
@@ -155,14 +224,20 @@ class ajaxController{
 					{
 						foreach($results as $result)
 						{
+							if($result['Type'] == 0 ){
+								$type = 'defaut';
+							}else{
+								$type = 'qualite';
+							}
+							
 							$data .= '<tr>
 								<td>'.$result['Name'].'</td>
-								<td>'.$result['Type'].'</td>
+								<td>'.$type.'</td>
 								<td>
-									<button data-type="Caractere" data-id="'.$result['IdSkills'].'" class="update btn btn-warning">Detail</button>
+									<button data-type="Caracteres" data-id="'.$result['IdSkills'].'" class="update btn btn-warning">Modifier</button>
 								</td>
 								<td>
-									<button data-type="Caractere" data-id="'.$result['IdSkills'].'" class="deleteRecord btn btn-danger">Supprimer</button>
+									<button data-type="Caracteres" data-id="'.$result['IdSkills'].'" class="deleteRecord btn btn-danger">Supprimer</button>
 								</td>
 							</tr>';
 						}
@@ -170,7 +245,7 @@ class ajaxController{
 					else
 					{
 						// records now found 
-						$data = '<tr><td colspan="6">Aucune question trouvée</td></tr>';
+						$data = '<tr><td colspan="6">Aucun caracteres trouvé</td></tr>';
 					}
 
 					$data .= '</table>';
@@ -181,7 +256,7 @@ class ajaxController{
 										<th>Enoncé</th>
 										<th>Type</th>
 										<th>Poste</th>
-										<th>Modifer</th>
+										<th>Modifier</th>
 										<th>Supprimer</th>
 									</tr>';
 
@@ -202,10 +277,10 @@ class ajaxController{
 								<td>'.$result['Type'].'</td>
 								<td>'.$result['Name'].'</td>
 								<td>
-									<button data-type="Question" data-id="'.$result['IdQuestion'].'" class="update btn btn-warning">Detail</button>
+									<button data-type="Questions" data-id="'.$result['IdQuestion'].'" class="update btn btn-warning">Modifier</button>
 								</td>
 								<td>
-									<button data-type="Question" data-id="'.$result['IdQuestion'].'" class="deleteRecord btn btn-danger">Supprimer</button>
+									<button data-type="Questions" data-id="'.$result['IdQuestion'].'" class="deleteRecord btn btn-danger">Supprimer</button>
 								</td>
 							</tr>';
 						}
@@ -231,33 +306,55 @@ class ajaxController{
 	}
 	
 	public function getDetailsAction($request){
-		if(isset($_POST['id']) && isset($_POST['id']) != ""){
+		if(isset($_POST['type']) && isset($_POST['type']) != ""){
 			// get ID and type
 			$id   = $_POST['id'];
 			$from = $_POST['type'];
+			switch($_POST['type']){
+				case 'Candidats':
 
-			// get Details
-			$query = "SELECT * FROM user WHERE IdUser = ".$id;
-			$dbh = controller::dbConnect();
-			$sth = $dbh->prepare($query);
-			$sth->execute();
-			$results = $sth->fetch();
-			
-			$response = array();
-			
-			if($results){
-				$response = $results;
-			}else{
-				$response['status'] = 200;
-				$response['message'] = "Data not found!";
+					// get Details
+					$query = "SELECT * FROM user WHERE IdUser = ".$id;
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetch();
+					
+					$response = array();
+					
+					if($results){
+						$response = $results;
+					}else{
+						$response['status'] = 200;
+						$response['message'] = "Data not found!";
+					}
+					break;
+					
+				case 'Jeux':
+
+					// get Details
+					$query = "SELECT * FROM game INNER JOIN candidate ON candidate.IdCandidate = candidate.IdCandidate WHERE IdGame = ".$id;
+					$dbh = controller::dbConnect();
+					$sth = $dbh->prepare($query);
+					$sth->execute();
+					$results = $sth->fetch();
+					
+					$response = array();
+					
+					if($results){
+						$response = $results;
+					}else{
+						$response['status'] = 200;
+						$response['message'] = "Data not found!";
+					}
+					break;
 			}
-			// display JSON data
-			echo json_encode($response);
-		}
-		else
-		{
+		}else{
 			$response['status'] = 200;
 			$response['message'] = "Invalid Request!";
 		}
+		
+		// display JSON data
+		echo json_encode($response);
 	}
 }

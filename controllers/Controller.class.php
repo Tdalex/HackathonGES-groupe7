@@ -34,18 +34,28 @@ abstract class Controller{
 
     public static function connectUser($email, $password){
         $dbh = self::dbConnect();
-        var_dump($email.' '.$password);
         $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
-        $res = $sth ->execute();
-        var_dump($res);
-        return true;
+        $sth->execute();
+		$res = $sth->fetch();
+		
+        $sth = $dbh->prepare('SELECT IdJobApplication FROM game WHERE IdCandidate = '. $res['IdUser']);
+        $sth->execute();
+		$game = $sth->fetch();
+		if($game)
+			$_SESSION['id_game'] = $game;
+		
+        $_SESSION['id_user']      = $res['IdUser'];
+        $_SESSION['name_user']    = $res['Name'];
+        $_SESSION['surname_user'] = $res['Surname'];
+        $_SESSION['email_user'] = $res['Email'];
+        return self::redirect("/gfiPlay");
     }
 
     public static function saveUser($request){
         //enregistrer l'utilisateur dans la BDD
         $dbh = self::dbConnect();
         $mdp = md5($request["password"]);
-        $query1 = 'INSERT INTO user (Name, Surname, Birthdate, Email, CV, Role, Password) VALUES ("'. $request["name"] .'", "'. $request["surname"] .'", "'. $request["birthday"] .'", "'. $request["email"] .'", "'. $request["cv"] .'", "candidate", "'. $mdp .'")';
+        $query1 = 'INSERT INTO user (Name, Surname, Birthdate, Email, CV, Role, Password, Gender) VALUES ("'. $request["name"] .'", "'. $request["surname"] .'", "'. $request["birthday"] .'", "'. $request["email"] .'", "'. $request["cv"] .'", "candidate", "'. $mdp .'", '. $request["gender"] .')';
         $sth1 = $dbh->prepare($query1);
         $sth1->execute();
 
@@ -70,7 +80,7 @@ abstract class Controller{
         $sth4->execute();
         $sth5->execute();
 
-        return true;
+        return self::redirect("/gfiPlay");
     }
 
     public static function selectQualities(){

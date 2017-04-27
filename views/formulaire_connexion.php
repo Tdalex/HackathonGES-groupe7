@@ -1,10 +1,12 @@
+
 <div class="home-container align">
   <div class="home-body col-md-3 animated fadeInLeft">
     <img class="home-logo" src="/src/img/home-logo.png">
 
     <!-- Formulaire -->
-    <form action="" method="post">
+    <form action="" method="post" id="form_connexion">
       <div class="gfi-input home-input">
+        <input type="hidden" name="type" value="signin" id="signin">
         <input name="mail" id="mail" type="text" class="gfi-input-text" required/>
         <span class="gfi-input-label">E-mail</span>
       </div>

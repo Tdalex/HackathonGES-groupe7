@@ -1,9 +1,10 @@
-<form method="post" action="#">
+<form method="post" action="#" id="form_inscription">
+    <input type="hidden" name="type" id="signup" value="signup">
     <div id="step1">
         <label for="name">Nom</label><input name="name" id="name" type="text" required><br/>
         <label for="surname">Prénom</label><input name="surname" id="surname" type="text" required><br/>
-        <!--<input type="radio" name="gender" value="homme">Homme
-        <input type="radio" name="gender" value="femme">Femme<br/>-->
+        <input type="radio" name="gender" value="0">Homme
+        <input type="radio" name="gender" value="1">Femme<br/>
         <label for="birthday">Date de naissance</label><input type="date" name="birthday" id="birthday" required><br/>
         <label for="email">Mail</label><input name="email" id="email" type="email" required><br/>
         <label for="password">Mot de passe</label><input name="password" id="password" type="password" required><br/>

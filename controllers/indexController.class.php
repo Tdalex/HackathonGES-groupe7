@@ -1,35 +1,40 @@
 <?php
 
-require('Controller.class.php');
+require('controller.class.php');
 
 class indexController{
 
-  public function __construct(){
-  }
+	public function __construct(){
+	}
 
-  public function indexAction($request){
-    //si le formulaire a bien été rempli
-    //if(isset($_REQUEST)&& !empty($_POST)){
-    //enregistre l'utilisateur
-    //    controller::saveUser($_POST);
-    //}
-    //sélectionne les qualités et défauts
-    //$qualities = controller::selectQualities();
-    //$defaults = controller::selectDefaults();
-    //$v = new view("formulaire_inscription");
-    //$v->assign("qualities", $qualities);
-    //$v->assign("defaults", $defaults);
-    if(isset($_REQUEST) && !empty($_POST)){
-      controller::connectUser($_POST['mail'], md5($_POST['mdp']));
-    }
+	public function indexAction($request){
+        //si le formulaire a bien été rempli
+        if(isset($_REQUEST)&& !empty($_POST)){
+              //enregistre l'utilisateur
+            if($_POST['type']== 'signup') {
+                controller::saveUser($_POST);
+            }else {
+                controller::connectUser($_POST['mail'], md5($_POST['mdp']));
+            }
+        }
+        //sélectionne les qualités et défauts
 
-    $v = new view("formulaire_connexion");
+        $qualities = controller::selectQualities();
+        $defaults = controller::selectDefaults();
+        $v = new view("homeView");
+		$v->assign("qualities", $qualities);
+		$v->assign("defaults", $defaults);
 
+	}
 
-  }
+	public function gfiPlayAction($request){
+		$v = new view("gameView");
+	}
 
-  public function homeAction($request){
-    echo "home";
-  }
+	public function logoutAction($request){
+		session_destroy();
+		return controller::redirect();
+	}
+
 
 }

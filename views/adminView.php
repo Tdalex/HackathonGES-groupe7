@@ -27,7 +27,7 @@
 			
            <!-- Content Section -->
 			<div class="container">
-				<?php if ($type != 'Candidats'){ ?>
+				<?php if ($type != 'Candidats' && $type != 'Jeux'){ ?>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="pull-right">

@@ -13,6 +13,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<?php if(isset($_SESSION['id_user'])){ ?>
+		<a href='/index/logout'>deconnexion</a>
+	<?php } ?>
 	<?php include $this->v;?>
+	
 </body>
 </html>
