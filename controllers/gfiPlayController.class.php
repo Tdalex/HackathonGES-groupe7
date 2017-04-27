@@ -20,12 +20,13 @@ class gfiPlayController{
 		if(!isset($_SESSION['id_user']))
 			controller::redirect();
 		
-		
 		$dbh = controller::dbConnect();
 		$sth = $dbh->prepare('INSERT INTO Game (Last_play, IdJobApplication, IdUser) VALUES(now(), "'.$_POST['job'].'","'.$_SESSION['id_user'].'")');		
 		$sth->execute();
 		
 		$_SESSION['id_game'] = $dbh->lastInsertId();
+		$_SESSION['id_job']  = $_POST['job'];
+		$_SESSION['last_question'] = 0;
 		
 		return controller::redirect('/gfiPlay/play');
 	}
@@ -34,6 +35,9 @@ class gfiPlayController{
 		if(!isset($_SESSION['id_user']) && !isset($_SESSION['id_game']))
 			controller::redirect('/gfiPlay');
 		
+		
 		$v = new view("playView");
 	}
+	
+	
 }

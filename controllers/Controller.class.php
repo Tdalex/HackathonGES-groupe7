@@ -38,12 +38,15 @@ abstract class controller{
         $sth->execute();
 		$res = $sth->fetch();
 		
-        $sth = $dbh->prepare('SELECT IdJobApplication FROM game WHERE IdCandidate = '. $res['IdUser']);
+        $sth = $dbh->prepare('SELECT * FROM game WHERE IdCandidate = '. $res['IdUser']);
         $sth->execute();
 		$game = $sth->fetch();
-		if($game)
-			$_SESSION['id_game'] = $game;
-		
+		if($game){
+			$_SESSION['id_game'] = $game['IdGame'];
+			$_SESSION['id_job']  = $game['IdJobApplication'];
+			$_SESSION['last_question']  = $game['Last_question'];
+		}
+	
         $_SESSION['id_user']      = $res['IdUser'];
         $_SESSION['name_user']    = $res['Name'];
         $_SESSION['surname_user'] = $res['Surname'];

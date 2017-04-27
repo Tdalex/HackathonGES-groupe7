@@ -126,6 +126,13 @@ function UpdateUserDetails() {
     );
 }
 
+function getQuestion() {
+    $.post('/ajax/getQuestion/', {
+	}, function (data, status) {
+        $(".game-screen").html(data);
+    });
+}
+
 $(document).on('click', '.getdetail', function() {
 	GetDetails($(this).data('type'), $(this).data('id'));
 });
@@ -164,8 +171,8 @@ $(document).ready(function () {
 	if($('.CRUD').length > 0)
 		readRecords($('.CRUD').data('type')); 	
 	
-	if($('.CRUD').length > 0)
-		readRecords($('.CRUD').data('type')); 
+	if($('.game-screen').length > 0)
+		getQuestion(); 
 	
     $("#step1").show();
     $("#step2").hide();
