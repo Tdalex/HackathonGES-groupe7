@@ -79,7 +79,8 @@ class ajaxController{
 		if(isset($_POST['action']) && !empty($_POST['action'])) {
 			switch($_POST['action']){
 				case 'Jeux':
-					$data = '<table class="table table-bordered table-striped">
+					$data = '<table id="game" class="table table-bordered table-striped">
+                                <thead>
 									<tr>
 										<th>Nom</th>
 										<th>Email</th>
@@ -88,7 +89,8 @@ class ajaxController{
 										<th>Date</th>
 										<th>Termine ?</th>
 										<th>Detail</th>
-									</tr>';
+									</tr>
+								</thead>';
 
 					$query = "SELECT * FROM game INNER JOIN candidate ON candidate.IdCandidate = candidate.IdCandidate";
 
@@ -96,7 +98,9 @@ class ajaxController{
 					$sth = $dbh->prepare($query);
 					$sth->execute();
 					$results = $sth->fetchAll();
-					// if query results contains rows then featch those rows 
+
+					$data .= '<tbody>';
+					// if query results contains rows then featch those rows
 					if(!empty($results))
 					{
 						foreach($results as $result)
@@ -119,16 +123,18 @@ class ajaxController{
 						$data = '<tr><td colspan="6">Aucun jeu trouvé</td></tr>';
 					}
 
-					$data .= '</table>';
+					$data .= '</tbody></table>';
 					break;
 					
 				case 'Candidats':
-					$data = '<table class="table table-bordered table-striped">
-									<tr>
-										<th>Nom</th>
-										<th>Email</th>
-										<th>Detail</th>
-									</tr>';
+					$data = '<table id="candidate" class="table table-bordered table-striped">
+								<thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Email</th>
+                                        <th>Detail</th>
+                                    </tr>
+                                </thead>';
 
 					$query = "SELECT * FROM user where role != 'admin'";
 					$query = "SELECT * FROM user";
@@ -137,6 +143,7 @@ class ajaxController{
 					$sth = $dbh->prepare($query);
 					$sth->execute();
 					$results = $sth->fetchAll();
+					$data .= '<tbody>';
 					// if query results contains rows then featch those rows 
 					if(!empty($results))
 					{
@@ -157,18 +164,20 @@ class ajaxController{
 						$data = '<tr><td colspan="6">Aucun candidat trouvé</td></tr>';
 					}
 
-					$data .= '</table>';
+					$data .= '</tbody></table>';
 					break;
 
 				case 'Postes':
-					$data = '<table class="table table-bordered table-striped">
+					$data = '<table id="poste" class="table table-bordered table-striped">
+                                <thead>
 									<tr>
 										<th>Nom</th>
 										<th>Durée avant nouvel essai</th>
 										<th>Quantité disponible</th>
 										<th>Modifier</th>
 										<th>Supprimer</th>
-									</tr>';
+									</tr>
+								</thead>';
 
 					$query = "SELECT * FROM JobApplication";
 
@@ -176,6 +185,7 @@ class ajaxController{
 					$sth = $dbh->prepare($query);
 					$sth->execute();
 					$results = $sth->fetchAll();
+					$data .= '<tbody>';
 					// if query results contains rows then featch those rows 
 					if(!empty($results))
 					{
@@ -200,17 +210,19 @@ class ajaxController{
 						$data = '<tr><td colspan="6">Aucun poste trouvé</td></tr>';
 					}
 
-					$data .= '</table>';
+					$data .= '</tbody></table>';
 					break;
 				
 				case 'Caracteres':
-					$data = '<table class="table table-bordered table-striped">
+					$data = '<table id="skill" class="table table-bordered table-striped">
+                                <thead>
 									<tr>
 										<th>Nom</th>
 										<th>Type</th>
 										<th>Modifier</th>
 										<th>Supprimer</th>
-									</tr>';
+									</tr>
+								</thead>';
 
 					$query = "SELECT * FROM Skills";
 
@@ -218,7 +230,7 @@ class ajaxController{
 					$sth = $dbh->prepare($query);
 					$sth->execute();
 					$results = $sth->fetchAll();
-
+                    $data .= '<tbody>';
 					// if query results contains rows then featch those rows 
 					if(!empty($results))
 					{
@@ -248,17 +260,19 @@ class ajaxController{
 						$data = '<tr><td colspan="6">Aucun caracteres trouvé</td></tr>';
 					}
 
-					$data .= '</table>';
+					$data .= '</tbody></table>';
 					break;
 				case 'Questions':
-					$data = '<table class="table table-bordered table-striped">
+					$data = '<table id="question" class="table table-bordered table-striped">
+                                <thead>
 									<tr>
 										<th>Enoncé</th>
 										<th>Type</th>
 										<th>Poste</th>
 										<th>Modifier</th>
 										<th>Supprimer</th>
-									</tr>';
+									</tr>
+								</thead>';
 
 					$query = "SELECT * FROM Question INNER JOIN JobApplication ON Question.IdJobApplication = JobApplication.IdJobApplication";
 
@@ -266,7 +280,7 @@ class ajaxController{
 					$sth = $dbh->prepare($query);
 					$sth->execute();
 					$results = $sth->fetchAll();
-
+                    $data .= '<tbody>';
 					// if query results contains rows then featch those rows 
 					if(!empty($results))
 					{
@@ -291,7 +305,7 @@ class ajaxController{
 						$data = '<tr><td colspan="6">Aucune question trouvée</td></tr>';
 					}
 
-					$data .= '</table>';
+					$data .= '</tbody></table>';
 					break;
 
 				default:

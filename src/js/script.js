@@ -65,6 +65,8 @@ function readRecords(type) {
 		action: type,
 	}, function (data, status) {
         $(".records_content").html(data);
+        showDatatable();
+
     });
 }
 
@@ -160,10 +162,62 @@ function HideShowStepSignUp() {
     $("#s3_prev").click(function() { $("#step2").show(); $("#step3").hide(); });
 }
 
+function showDatatable(){
+    $("#game").DataTable({
+        columns: [
+            { title: "Nom" },
+            { title: "Email" },
+            { title: "Poste" },
+            { title: "Score" },
+            { title: "Date" },
+            { title: "Terminé ?" },
+            { title: "Détail" }
+        ]
+    } );
+
+    $("#candidate").DataTable({
+        columns: [
+            { title: "Nom" },
+            { title: "Email" },
+            { title: "Détail" }
+        ]
+    });
+
+    $("#poste").DataTable({
+        columns: [
+            { title: "Nom" },
+            { title: "Durée avant nouvel essai" },
+            { title: "Quantité disponible" },
+            { title: "Modifier" },
+            { title: "Supprimer" }
+        ]
+    });
+
+    $("#skill").DataTable({
+        columns: [
+            { title: "Nom" },
+            { title: "Type" },
+            { title: "Modifier" },
+            { title: "Supprimer" }
+        ]
+    });
+
+    $("#question").DataTable(
+        {
+        columns: [
+            { title: "Enoncé" },
+            { title: "Type" },
+            { title: "Poste" },
+            { title: "Modifier" },
+            { title: "Supprimer" },
+        ]
+    }
+    );
+}
+
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
-		readRecords($('.CRUD').data('type')); 	
-	
+		readRecords($('.CRUD').data('type'));
 	if($('.CRUD').length > 0)
 		readRecords($('.CRUD').data('type')); 
 	
@@ -172,4 +226,5 @@ $(document).ready(function () {
     $("#step3").hide();
     HideShowStepSignUp();
     HideShowConnectSignUp();
+
 });
