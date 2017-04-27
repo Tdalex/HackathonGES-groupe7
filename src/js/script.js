@@ -21,6 +21,8 @@ function addRecord(action) {
 
 function addRecordQCM(action) {
     // Add record
+	console.log( $.map($("#QCM_form .text_answer"), function (el) { return el.value; }));
+	console.log($.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }));
     $.post("ajax/addRecord/", {
 		action:           action,
 		type:             'QCM',
@@ -30,6 +32,7 @@ function addRecordQCM(action) {
 		is_answer:        $.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }),
     }, function (data, status) {
         // close the popup
+		console.log(data);
         $("#add_new_closed_question").modal("hide");
 		
         // read records again
@@ -58,7 +61,8 @@ function addRecordOpen(action) {
 function readRecords(type) {
 	
 	//reset forms
-	$('input').val('');
+	$('input').filter(':text').val('');
+	$('textarea').val('');
 	$('input').filter(':checkbox').prop('checked',false);
 	
     $.post('ajax/getRecord/', {
@@ -128,6 +132,19 @@ function UpdateUserDetails() {
     );
 }
 
+function answerQuestion(value) {
+    // Update the game data by requesting to the server using ajax
+    $.post("/ajax/answerQuestion", {
+            value: value
+        },
+        function (data, status) {
+			console.log(data);
+            // next question
+            getQuestion();
+        }
+    );
+}
+
 function getQuestion() {
     $.post('/ajax/getQuestion/', {
 	}, function (data, status) {
@@ -154,6 +171,9 @@ $(document).on('click', '.deleteRecord', function() {
 	deleteRecord($(this).data('type'), $(this).data('id'));
 });
 
+$(document).on('click', '.answer_question', function() {
+	answerQuestion($(this).val());
+});
 
 function HideShowConnectSignUp() {
     $("#form_connexion").hide();

@@ -30,7 +30,7 @@ class ajaxController{
 							$sth = $dbh->prepare('INSERT INTO Answer (Text,Is_Answer,IdQuestion) VALUES("'.$answer.'","'. $is_answer.'","'.$idQuestion.'")');		
 							$sth->execute();
 							$i++;
-						}
+						}die();
 					}else{
 						$sth = $dbh->prepare('INSERT INTO Answer (Text,Is_Answer,IdQuestion) VALUES("'.$_POST['answer'].'","1","'.$idQuestion.'")');		
 						$sth->execute();
@@ -377,34 +377,68 @@ class ajaxController{
 		if($_SESSION['last_question'] < 10){			
 			$type = 'QCM';
 			$questionTemplate = __DIR__ . '/../views/formulaire/QCM.php';
-			$needle = array('{{wording}}','{{answer1}}','{{answer2}}','{{answer3}}','{{answer4}}','{{text_answer1}}','{{text_answer2}}','{{text_answer3}}','{{text_answer4}}');
+			$needle = array('{{score}}','{{wording}}','{{answer1}}','{{answer2}}','{{answer3}}','{{answer4}}','{{text_answer1}}','{{text_answer2}}','{{text_answer3}}','{{text_answer4}}');
 		}else{
 			$type = 'open';
 			$questionTemplate = __DIR__ . '/../views/formulaire/openQuestion.php';
-			$needle = array('{{wording}}','{{answer}}');
+			$needle = array('{{score}}','{{wording}}','{{answer}}');
 		}
 
 		$dbh = controller::dbConnect();
+		$query = "SELECT count(*) FROM Question WHERE type='". $type ."' AND IdJobApplication = " . $_SESSION['id_job'] ." order by rand(". $_SESSION['id_game'] .") limit 1 offset ". $_SESSION['last_question'];
+		$sth = $dbh->prepare($query);
+		$sth->execute();
+		$questionCount = $sth->fetch();
+		
+		if(!$_SESSION['last_question'] <= $questionCount){
+			echo 'Bravo vous avez repondu a toutes les questions, votre score: '. $_SESSION['score'];
+			return true;
+		}
 		
 		//question
 		$query = "SELECT * FROM Question WHERE type='". $type ."' AND IdJobApplication = " . $_SESSION['id_job'] ." order by rand(". $_SESSION['id_game'] .") limit 1 offset ". $_SESSION['last_question'];
 		$sth = $dbh->prepare($query);
 		$sth->execute();
 		$question = $sth->fetch();
+		$_SESSION['idQuestion'] = $question['IdQuestion'];
 		
-		$replace = array($question['Wording']);	
+		$replace = array($_SESSION['score'], $question['Wording']);	
 		if($type == 'QCM'){
 			//answer
 			$query = "SELECT * FROM answer WHERE IdQuestion = " . $question['IdQuestion'] ." order by rand()";
 			$sth = $dbh->prepare($query);
 			$sth->execute();
 			$answer = $sth->fetchAll();
-		
-			$replace = array($question['Wording'],$answer[0]['IdAnswer'],$answer[1]['IdAnswer'],$answer[2]['IdAnswer'],$answer[3]['IdAnswer'],$answer[0]['Text'],$answer[1]['Text'],$answer[2]['Text'],$answer[3]['Text']);
+			$replace = array($_SESSION['score'], $question['Wording'],$answer[0]['IdAnswer'],$answer[1]['IdAnswer'],$answer[2]['IdAnswer'],$answer[3]['IdAnswer'],$answer[0]['Text'],$answer[1]['Text'],$answer[2]['Text'],$answer[3]['Text']);
 		}
 		
 		$template = file_get_contents($questionTemplate, FILE_USE_INCLUDE_PATH);
 		$page 	  = str_replace($needle,$replace,$template);
 		echo $page;
+	}
+	
+	public function answerQuestionAction($request){
+		if(!isset($_SESSION['id_game']) && !isset($_POST['value']))
+			return controller::redirect('/gfiPlay');
+		
+		$dbh = controller::dbConnect();
+		
+		$query = 'SELECT * FROM answer WHERE IdQuestion = ' . $_SESSION['idQuestion'] . ' AND IdAnswer = '. $_POST['value'];
+		$sth = $dbh->prepare($query);		
+		$sth->execute();
+		$answer = $sth->fetch();
+		
+		if($answer['Is_answer']){
+			$point = '+1';
+			$_SESSION['score']++;
+		}else{
+			$point = '-1';
+			$_SESSION['score']--;
+		}
+		
+		$sth = $dbh->prepare('UPDATE game SET score = score '. $point .', LastQuestion = LastQuestion + 1, Last_play = now() WHERE idGame = '. $_SESSION['id_game'] );		
+		$sth->execute();
+		
+		$_SESSION['last_question']++;
 	}
 }

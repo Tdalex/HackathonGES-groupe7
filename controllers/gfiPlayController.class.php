@@ -27,14 +27,13 @@ class gfiPlayController{
 		$_SESSION['id_game'] = $dbh->lastInsertId();
 		$_SESSION['id_job']  = $_POST['job'];
 		$_SESSION['last_question'] = 0;
-		
+		$_SESSION['score'] = 0;
 		return controller::redirect('/gfiPlay/play');
 	}
 	
 	public function playAction($request){
 		if(!isset($_SESSION['id_user']) && !isset($_SESSION['id_game']))
 			controller::redirect('/gfiPlay');
-		
 		
 		$v = new view("playView");
 	}

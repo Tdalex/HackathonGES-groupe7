@@ -113,7 +113,7 @@
 
 													<div class="form-group">
 														<label for="is_answer">reponse juste ?</label>
-														<input type="checkbox" class="is_answer" value="2" />
+														<input type="checkbox" class="is_answer" value="2"/>
 													</div>
 												</div>
 												<div id='anwser3'>
