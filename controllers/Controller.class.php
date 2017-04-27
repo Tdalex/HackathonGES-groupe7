@@ -59,22 +59,23 @@ abstract class Controller{
         //enregistrer l'utilisateur dans la BDD
         $dbh = self::dbConnect();
         $mdp = md5($request["password"]);
-        $query1 = 'INSERT INTO user (Name, Surname, Birthdate, Email, CV, Role, Password, Gender) VALUES ("'. $request["name"] .'", "'. $request["surname"] .'", "'. $request["birthday"] .'", "'. $request["email"] .'", "'. $request["cv"] .'", "candidate", "'. $mdp .'", '. $request["gender"] .')';
+        $query1 = 'INSERT INTO user (Name, Surname, Birthdate, Email, CV, Role, Password, Gender, Competence) VALUES ("'. $request["name"] .'", "'. $request["surname"] .'", "'. $request["birthday"] .'", "'. $request["email"] .'", "'. $request["cv"] .'", "candidate", "'. $mdp .'", '. $request["gender"] .', "'. $request["competence"] .'")';
         $sth1 = $dbh->prepare($query1);
         $sth1->execute();
 
+
         $idUser = $dbh->lastInsertId();
-        $nameUser = $_POST['name'];
-        $surnameUser = $_POST['surname'];
+        $nameUser = $request['name'];
+        $surnameUser = $request['surname'];
 
         $_SESSION['id_user'] = $idUser;
         $_SESSION['name_user'] = $nameUser;
         $_SESSION['surname_user'] = $surnameUser;
         //enregistrer les skills de l'utilisateur dans la BDD
-        $query2 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$_POST["qualite1"].')';
-        $query3 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$_POST["qualite2"].')';
-        $query4 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$_POST["defaut1"].')';
-        $query5 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$_POST["defaut2"].')';
+        $query2 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$request["qualite1"].')';
+        $query3 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$request["qualite2"].')';
+        $query4 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$request["defaut1"].')';
+        $query5 = 'INSERT INTO user_skills VALUES('.$idUser.', '.$request["defaut2"].')';
         $sth2 = $dbh->prepare($query2);
         $sth3 = $dbh->prepare($query3);
         $sth4 = $dbh->prepare($query4);
