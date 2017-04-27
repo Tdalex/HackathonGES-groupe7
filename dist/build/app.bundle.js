@@ -31,7 +31,7 @@ function addRecordQCM(action) {
 		is_answer:        $.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }),
     }, function (data, status) {
         // close the popup
-        $("#add_new_QCM_question").modal("hide");
+        $("#add_new_closed_question").modal("hide");
 
         // read records again
         readRecords(action);
@@ -151,8 +151,8 @@ function HideShowStepSignIn() {
 
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
-		readRecords($('.CRUD').data('type')); // calling function
-    // READ recods on page load
+		readRecords($('.CRUD').data('type')); 
+	
     $("#step1").show();
     $("#step2").hide();
     $("#step3").hide();
