@@ -9,21 +9,20 @@ class indexController{
 
 	public function indexAction($request){
         //si le formulaire a bien été rempli
-        //if(isset($_REQUEST)&& !empty($_POST)){
-            //enregistre l'utilisateur
-        //    controller::saveUser($_POST);
-        //}
-        //sélectionne les qualités et défauts
-        //$qualities = controller::selectQualities();
-        //$defaults = controller::selectDefaults();
-		//$v = new view("formulaire_inscription");
-		//$v->assign("qualities", $qualities);
-		//$v->assign("defaults", $defaults);
-        if(isset($_REQUEST) && !empty($_POST)){
-            controller::connectUser($_POST['mail'], md5($_POST['mdp']));
+        if(isset($_REQUEST)&& !empty($_POST)){
+              //enregistre l'utilisateur
+            if($_POST['type']== 'signup') {
+                controller::saveUser($_POST);
+            }else {
+                controller::connectUser($_POST['mail'], md5($_POST['mdp']));
+            }
         }
-
-        $v = new view("formulaire_connexion");
+        //sélectionne les qualités et défauts
+        $v = new view("homeView");
+        $qualities = controller::selectQualities();
+        $defaults = controller::selectDefaults();
+		$v->assign("qualities", $qualities);
+		$v->assign("defaults", $defaults);
 
 	}
 

@@ -1,4 +1,5 @@
-<form method="post" action="#">
+<form method="post" action="#" id="form_inscription">
+    <input type="hidden" name="type" id="signup" value="signup">
     <div id="step1">
         <label for="name">Nom</label><input name="name" id="name" type="text" required><br/>
         <label for="surname">Prénom</label><input name="surname" id="surname" type="text" required><br/>

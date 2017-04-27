@@ -34,10 +34,13 @@ abstract class controller{
 	
     public static function connectUser($email, $password){
         $dbh = self::dbConnect();
-        var_dump($email.' '.$password);
         $sth = $dbh->prepare('SELECT * FROM user WHERE Email = "'. $email .'" AND Password = "' . $password .'"');
         $res = $sth ->execute();
-        var_dump($res);
+
+        $_SESSION['id_user'] = $res['IdUser'];
+        $_SESSION['name_user'] = $res['Name'];
+        $_SESSION['surname_user'] = $res['Surname'];
+        $_SESSION['email_user'] = $res['Email'];
         return true;
     }
 
@@ -70,7 +73,7 @@ abstract class controller{
         $sth4->execute();
         $sth5->execute();
 
-        return true;
+        return redirect();
     }
 
     public static function selectQualities(){

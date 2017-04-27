@@ -142,7 +142,15 @@ $(document).on('click', '.deleteRecord', function() {
 	deleteRecord($(this).data('type'), $(this).data('id'));
 });
 
-function HideShowStepSignIn() {
+
+function HideShowConnectSignUp() {
+    $("#form_connexion").hide();
+    $("#form_inscription").hide();
+    $("#inscription").click(function(){ $("#form_inscription").show(); $("#form_connexion").hide(); });
+    $("#connexion").click(function(){ $("#form_inscription").hide(); $("#form_connexion").show(); });
+}
+
+function HideShowStepSignUp() {
     $("#s1_next").click(function() { $("#step1").hide(); $("#step2").show(); });
     $("#s2_prev").click(function() { $("#step1").show(); $("#step2").hide(); });
     $("#s2_next").click(function() { $("#step2").hide(); $("#step3").show(); });
@@ -156,6 +164,7 @@ $(document).ready(function () {
     $("#step1").show();
     $("#step2").hide();
     $("#step3").hide();
-    HideShowStepSignIn();
+    HideShowStepSignUp();
+    HideShowConnectSignUp();
 });
 },{}]},{},[1])
