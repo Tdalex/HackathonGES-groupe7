@@ -4,6 +4,11 @@ html, body {
   background: url('/src/img/home-pattern.png') repeat fixed;
 }
 
+a {
+  color: #f8b400 !important;
+  cursor: pointer;
+}
+
 .align {
   display: flex;
   align-items: center;

@@ -5,7 +5,7 @@
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-	
+
 	<link rel="stylesheet" type="text/css" href="/dist/build/app.bundle.css">
 	<script src="/src/js/script.js"></script>
 	<!--<script src="/dist/build/js/app.bundle.js"></script>-->
@@ -22,6 +22,6 @@
 		<a href='/index/logout'>deconnexion</a>
 	<?php } ?>
 	<?php include $this->v;?>
-	
+
 </body>
 </html>
