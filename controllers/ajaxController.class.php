@@ -363,11 +363,11 @@ class ajaxController{
 		if($_SESSION['last_question'] < 10){			
 			$type = 'QCM';
 			$questionTemplate = __DIR__ . '/../views/formulaire/QCM.php';
-			$replace = array('{{answer1}}','{{answer2}}','{{answer3}}','{{answer4}}','{{text_answer1}}','{{text_answer2}}','{{text_answer3}','{{text_answer4}}');
+			$needle = array('{{wording}}','{{answer1}}','{{answer2}}','{{answer3}}','{{answer4}}','{{text_answer1}}','{{text_answer2}}','{{text_answer3}}','{{text_answer4}}');
 		}else{
 			$type = 'open';
 			$questionTemplate = __DIR__ . '/../views/formulaire/openQuestion.php';
-			$replace = array();
+			$needle = array('{{wording}}','{{answer}}');
 		}
 
 		$dbh = controller::dbConnect();
@@ -378,13 +378,16 @@ class ajaxController{
 		$sth->execute();
 		$question = $sth->fetch();
 		
-		//answer
-		$query = "SELECT * FROM answer WHERE IdQuestion = " . $question['IdQuestion'] ." order by rand()";
-		$sth = $dbh->prepare($query);
-		$sth->execute();
-		$answer = $sth->fetchAll();
+		$replace = array($question['Wording']);	
+		if($type == 'QCM'){
+			//answer
+			$query = "SELECT * FROM answer WHERE IdQuestion = " . $question['IdQuestion'] ." order by rand()";
+			$sth = $dbh->prepare($query);
+			$sth->execute();
+			$answer = $sth->fetchAll();
 		
-		$needle = array(')
+			$replace = array($question['Wording'],$answer[0]['IdAnswer'],$answer[1]['IdAnswer'],$answer[2]['IdAnswer'],$answer[3]['IdAnswer'],$answer[0]['Text'],$answer[1]['Text'],$answer[2]['Text'],$answer[3]['Text']);
+		}
 		
 		$template = file_get_contents($questionTemplate, FILE_USE_INCLUDE_PATH);
 		$page 	  = str_replace($needle,$replace,$template);
