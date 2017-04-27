@@ -224,11 +224,17 @@ class ajaxController{
 					{
 						foreach($results as $result)
 						{
+							if($result['Type'] == 0 ){
+								$type = 'defaut';
+							}else{
+								$type = 'qualite';
+							}
+							
 							$data .= '<tr>
 								<td>'.$result['Name'].'</td>
-								<td>'.$result['Type'].'</td>
+								<td>'.$type.'</td>
 								<td>
-									<button data-type="Caracteres" data-id="'.$result['IdSkills'].'" class="update btn btn-warning">Detail</button>
+									<button data-type="Caracteres" data-id="'.$result['IdSkills'].'" class="update btn btn-warning">Modifier</button>
 								</td>
 								<td>
 									<button data-type="Caracteres" data-id="'.$result['IdSkills'].'" class="deleteRecord btn btn-danger">Supprimer</button>
