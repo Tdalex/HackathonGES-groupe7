@@ -212,11 +212,11 @@ function HideShowStepSignUp() {
         $("#step2").hide();
     });
     $("#validerinscription").click(function() {
-      // $("#qualite1").val() &&
-      // $("#qualite2").val() &&
-      // $("#default1").val() &&
-      // $("#default2").val() &&
       if(
+        $("#qualite1").val() &&
+        $("#qualite2").val() &&
+        $("#default1").val() &&
+        $("#default2").val() &&
         $("#competence").val()
       ) {
         console.log('enterform');
