@@ -14,8 +14,8 @@ function addRecord(action) {
     }, function (data, status) {
         // close the popup
         $("#add_new_record_modal").modal("hide");
-
-        // read records again
+        
+		// read records again
         readRecords(action);
     });
 }
@@ -31,8 +31,8 @@ function addRecordQCM(action) {
 		is_answer:        $.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }),
     }, function (data, status) {
         // close the popup
-        $("#add_new_QCM_question").modal("hide");
-
+        $("#add_new_closed_question").modal("hide");
+		
         // read records again
         readRecords(action);
     });
@@ -48,9 +48,8 @@ function addRecordOpen(action) {
 		answer:           $("#open_form #answer").val(),
     }, function (data, status) {
         // close the popup
-		console.log(data);
-        $("#add_new_opened_question").modal("hide");
-
+		$("#add_new_opened_question").modal("hide");
+		
         // read records again
         readRecords(action);
     });
@@ -58,6 +57,11 @@ function addRecordOpen(action) {
 
 // READ records
 function readRecords(type) {
+	
+	//reset forms
+	$('input').val('');
+	$('input').filter(':checkbox').prop('checked',false);
+	
     $.post('ajax/getRecord/', {
 		action: type,
 	}, function (data, status) {
@@ -159,8 +163,8 @@ function HideShowStepSignUp() {
 
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
-		readRecords($('.CRUD').data('type')); // calling function
-    // READ recods on page load
+		readRecords($('.CRUD').data('type')); 
+	
     $("#step1").show();
     $("#step2").hide();
     $("#step3").hide();

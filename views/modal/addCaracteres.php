@@ -5,5 +5,8 @@
 
 <div class="form-group">
 	<label for="type">Type</label>
-	<input type="text" id="type" placeholder="Type" class="form-control"/>
+	<select id='type' class="form-control">	
+		<option value='1'>Qualite</option>
+		<option value='0'>Defaut</option>
+	<select>
 </div>
