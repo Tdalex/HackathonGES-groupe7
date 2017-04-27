@@ -9,7 +9,6 @@ class adminController{
 
 	public function indexAction($request){
 		$_SESSION['role'] = 'admin';
-		$_SESSION['surname'] = 'root';
 		//check admin
 		if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin')
 			controller::redirect();

@@ -146,7 +146,7 @@ function UpdateUserDetails() {
     );
 }
 
-function answerQuestion(value) {
+function answerQuestion(type, value) {
     // Update the game data by requesting to the server using ajax
     $.post("/ajax/answerQuestion", {
             value: value
@@ -186,7 +186,7 @@ $(document).on('click', '.deleteRecord', function() {
 });
 
 $(document).on('click', '.answer_question', function() {
-	answerQuestion($(this).val());
+	answerQuestion($(this).data('type'), $(this).val());
 });
 
 function HideShowConnectSignUp() {
