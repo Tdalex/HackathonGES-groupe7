@@ -18,9 +18,10 @@ class indexController{
             }
         }
         //sélectionne les qualités et défauts
-        $v = new view("homeView");
+
         $qualities = controller::selectQualities();
         $defaults = controller::selectDefaults();
+        $v = new view("homeView");
 		$v->assign("qualities", $qualities);
 		$v->assign("defaults", $defaults);
 
