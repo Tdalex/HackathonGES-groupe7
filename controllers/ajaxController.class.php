@@ -417,9 +417,6 @@ class ajaxController{
 			$replace = array($_SESSION['score'], $question['Wording'],$answer['Text']);
 		}
 
-		
-		
-
 		$template = file_get_contents($questionTemplate, FILE_USE_INCLUDE_PATH);
 		$page 	  = str_replace($needle,$replace,$template);
 		echo $page;

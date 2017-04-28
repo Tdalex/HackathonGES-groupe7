@@ -305,7 +305,7 @@ $(document).ready(function () {
     $("#step3").hide();
     HideShowStepSignUp();
     seConnecter();
-    postsLink();
+    // postsLink();
     sinscrire();
     HideShowConnectSignUp();
 

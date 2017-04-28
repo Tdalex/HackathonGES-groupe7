@@ -46,7 +46,7 @@
         <div style="text-align: center; vertical-align: middle; padding: 15px 10px;">
           <span style="color: rgba(41, 41, 41, 0.39);">Vous pouvez importer votre CV :</span>
           <div style="vertical-align: middle; margin: 10px 0 -10px; overflow: hidden;" class="align">
-            <input type="file" name="cv" id="cv" required/>
+            <input type="file" name="cv" id="cv"/>
           </div>
         </div>
 

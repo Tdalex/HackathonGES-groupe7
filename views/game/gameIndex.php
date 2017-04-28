@@ -1,4 +1,4 @@
-<div id="gameindex" class="hidden">
+<div id="gameindex">
   <div class="col-md-3">
     <img class="home-logo" src="/src/img/home-logo.png" height="250">
     <div style="background: white; border: solid 1px grey; padding: 15px; margin-top: 210px; position: relative;">

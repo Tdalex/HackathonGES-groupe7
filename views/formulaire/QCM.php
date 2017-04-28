@@ -1,4 +1,4 @@
-<div id="qcmview" class="full-height hidden">
+<div id="qcmview" class="full-height">
   <div class="full-height">
     <div class="col-md-3 full-height" style="margin-left: 0; text-align:center;">
       <img class="home-logo" src="/src/img/home-logo.png" height="250">

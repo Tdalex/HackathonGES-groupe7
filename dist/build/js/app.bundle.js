@@ -1,12 +1,28 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-},{}]},{},[1])
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-console.log('lol');
-
-},{}]},{},[1])
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // Add Record
+function seConnecter(){
+  $(".home-connect-link").click(function() {
+    $("#home-container").addClass('hidden');
+    $("#connexion_container").removeClass('hidden');
+  });
+}
+
+function postsLink() {
+  $('.posts-link').click(function() {
+    $("#home-container").addClass('hidden');
+    $("#connexion_container").addClass('hidden');
+    $("#qcmview").removeClass('hidden');
+    $("#gameindex").addClass('hidden');
+  });
+}
+
+function sinscrire(){
+  $(".home-subscribe-link").click(function() {
+    $("#home-container").removeClass('hidden');
+    $("#connexion_container").addClass('hidden');
+  });
+}
+
 function addRecord(action) {
     // Add record
     $.post("ajax/addRecord/", {
@@ -21,7 +37,7 @@ function addRecord(action) {
     }, function (data, status) {
         // close the popup
         $("#add_new_record_modal").modal("hide");
-        
+
 		// read records again
         readRecords(action);
     });
@@ -29,6 +45,8 @@ function addRecord(action) {
 
 function addRecordQCM(action) {
     // Add record
+	console.log( $.map($("#QCM_form .text_answer"), function (el) { return el.value; }));
+	console.log($.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }));
     $.post("ajax/addRecord/", {
 		action:           action,
 		type:             'QCM',
@@ -38,8 +56,9 @@ function addRecordQCM(action) {
 		is_answer:        $.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }),
     }, function (data, status) {
         // close the popup
+		console.log(data);
         $("#add_new_closed_question").modal("hide");
-		
+
         // read records again
         readRecords(action);
     });
@@ -56,7 +75,7 @@ function addRecordOpen(action) {
     }, function (data, status) {
         // close the popup
 		$("#add_new_opened_question").modal("hide");
-		
+
         // read records again
         readRecords(action);
     });
@@ -64,11 +83,12 @@ function addRecordOpen(action) {
 
 // READ records
 function readRecords(type) {
-	
+
 	//reset forms
-	$('input').val('');
+	$('input').filter(':text').val('');
+	$('textarea').val('');
 	$('input').filter(':checkbox').prop('checked',false);
-	
+
     $.post('ajax/getRecord/', {
 		action: type,
 	}, function (data, status) {
@@ -136,17 +156,15 @@ function UpdateUserDetails() {
     );
 }
 
-function UpdateUserDetails(type, value) {
-    // Update the details by requesting to the server using ajax
-    $.post("ajax/answerQuestion.php", {
-            value: value,
-            type: type
+function answerQuestion(type, value) {
+    // Update the game data by requesting to the server using ajax
+    $.post("/ajax/answerQuestion", {
+            value: value
         },
         function (data, status) {
-            // hide modal popup
-            $("#update_user_modal").modal("hide");
-            // reload Users by using readRecords();
-            readRecords();
+			console.log(data);
+            // next question
+            getQuestion();
         }
     );
 }
@@ -169,33 +187,58 @@ $(document).on('click', '.addRecord', function() {
 $(document).on('click', '.addRecordQCM', function() {
 	addRecordQCM($(this).data('type'));
 });
-
 $(document).on('click', '.addRecordOpen', function() {
 	addRecordOpen($(this).data('type'));
 });
 
-
-$(document).on('click', '.answer_question', function() {
-	addRecordOpen($(this).data('type'));
+$(document).on('click', '.deleteRecord', function() {
+	deleteRecord($(this).data('type'), $(this).data('id'));
 });
 
-$(document).on('click', '.deleteRecord', function() {
+$(document).on('click', '.answer_question', function() {
 	answerQuestion($(this).data('type'), $(this).val());
 });
 
-
 function HideShowConnectSignUp() {
-    $("#form_connexion").hide();
-    $("#form_inscription").hide();
-    $("#inscription").click(function(){ $("#form_inscription").show(); $("#form_connexion").hide(); });
-    $("#connexion").click(function(){ $("#form_inscription").hide(); $("#form_connexion").show(); });
+
 }
 
 function HideShowStepSignUp() {
-    $("#s1_next").click(function() { $("#step1").hide(); $("#step2").show(); });
-    $("#s2_prev").click(function() { $("#step1").show(); $("#step2").hide(); });
-    $("#s2_next").click(function() { $("#step2").hide(); $("#step3").show(); });
-    $("#s3_prev").click(function() { $("#step2").show(); $("#step3").hide(); });
+    $("#s1_next").click(function() {
+      if(
+        $('#name').val() &&
+        $('#surname').val() &&
+        $('#gender input:checked').val() &&
+        $('#birthday').val() &&
+        $('#email').val() &&
+        $('#password').val()
+      ) {
+        $("#step1").hide();
+        $("#step2").show();
+      }
+    });
+    $("#s2_prev").click(function() {
+        $("#step1").show();
+        $("#step2").hide();
+    });
+    $("#validerinscription").click(function() {
+      if(
+        $("#qualite1").val() &&
+        $("#qualite2").val() &&
+        $("#default1").val() &&
+        $("#default2").val() &&
+        $("#competence").val()
+      ) {
+        $("#step2").hide();
+        $("#step3").show();
+        $('.gfi-body-footer').hide();
+      }
+    });
+
+    $('#combattre').click(function() {
+      $('#gameindex').removeClass('hidden');
+      $('#home-container').hide();
+    });
 }
 
 function showDatatable(){
@@ -253,16 +296,20 @@ function showDatatable(){
 
 $(document).ready(function () {
 	if($('.CRUD').length > 0)
-		readRecords($('.CRUD').data('type')); 	
-	
+		readRecords($('.CRUD').data('type'));
+
 	if($('.game-screen').length > 0)
-		getQuestion(); 
-	
+		getQuestion();
+
     $("#step1").show();
     $("#step2").hide();
     $("#step3").hide();
     HideShowStepSignUp();
+    seConnecter();
+    postsLink();
+    sinscrire();
     HideShowConnectSignUp();
 
 });
+
 },{}]},{},[1])
