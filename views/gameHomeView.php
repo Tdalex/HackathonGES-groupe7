@@ -6,11 +6,11 @@
       <span style="display: block; font-size: 20px; font-weight: 800; text-align: center;"><?php echo $_SESSION['surname_user'] . ' ' . $_SESSION['name_user']; ?></span>
       <div style="margin: 20px 0;">
         <span>Partie en cours :</span>
-        <span style="float: right; padding: 5px 10px; background: #f8b400; color: white;"><?php echo isset($_SESSION['id_game']) ?  'oui' :  'non'; ?></span>
+        <span style="float: right; padding: 5px 10px; background: #ee8023; color: white;"><?php echo isset($_SESSION['id_game']) ?  'oui' :  'non'; ?></span>
       </div>
       <div style="margin: 20px 0;">
         <span>Parties terminées :</span>
-        <span style="float: right; padding: 5px 10px; background: #f8b400; color: white;"><?php echo $_SESSION['game_finished']; ?></span>
+        <span style="float: right; padding: 5px 10px; background: #ee8023; color: white;"><?php echo $_SESSION['game_finished']; ?></span>
       </div>
       <div style="margin: 10px 0;">
         <span>Compétence :</span>
@@ -39,7 +39,7 @@
 				<span style="margin-left: 5px; background: #00a5ff; color: white;padding: 7px 15px;border-radius: 50px;letter-spacing: 2px;"><?php echo $_SESSION['score']; ?> pts</span>
 				<span style="float: right;">
 				  Postes disponnibles :
-				  <span style="padding: 5px 10px; background: #f8b400; color: white;"><?php  echo $_SESSION['game_info']['Quantity']; ?></span>
+				  <span style="padding: 5px 10px; background: #ee8023; color: white;"><?php  echo $_SESSION['game_info']['Quantity']; ?></span>
 				</span>
 			  </div>
 			  <div>
@@ -69,7 +69,7 @@
 				<span style="margin-left: 5px; background: green; color: white;padding: 7px 15px;border-radius: 50px;letter-spacing: 2px;">Disponible</span>
 				<span style="float: right;">
 				  Postes disponibles :
-				  <span style="padding: 5px 10px; background: #f8b400; color: white;"><?php echo $job['Quantity']; ?></span>
+				  <span style="padding: 5px 10px; background: #ee8023; color: white;"><?php echo $job['Quantity']; ?></span>
 				</span>
 			  </div>
 			  <div>
@@ -106,7 +106,7 @@
 					<span style="margin-left: 5px; background: #00a5ff; color: white;padding: 7px 15px;border-radius: 50px;letter-spacing: 2px;"><?php echo $fg['Score']; ?> pts</span>
 					<span style="float: right;">
 					  Postes disponnibles :
-					  <span style="padding: 5px 10px; background: #f8b400; color: white;"><?php echo $fg['Quantity']; ?></span>
+					  <span style="padding: 5px 10px; background: #ee8023; color: white;"><?php echo $fg['Quantity']; ?></span>
 					</span>
 				  </div>
 				  <div>

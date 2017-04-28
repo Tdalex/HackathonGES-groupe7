@@ -6,7 +6,7 @@
     border-bottom:1px solid rgba(41, 41, 41, 0.39);
 
     &:focus{
-      border-bottom:1px solid #f8b400;
+      border-bottom:1px solid #ee8023;
     }
   }
 
@@ -38,7 +38,7 @@
   }
 
   .gfi-input-text:focus ~ .gfi-input-label{
-    color: #f8b400;
+    color: #ee8023;
   }
 
 }
