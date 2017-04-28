@@ -44,8 +44,6 @@ function addRecord(action) {
 
 function addRecordQCM(action) {
     // Add record
-	console.log( $.map($("#QCM_form .text_answer"), function (el) { return el.value; }));
-	console.log($.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }));
     $.post("ajax/addRecord/", {
 		action:           action,
 		type:             'QCM',
@@ -55,7 +53,6 @@ function addRecordQCM(action) {
 		is_answer:        $.map($("#QCM_form .is_answer:checked"), function (el) { return el.value; }),
     }, function (data, status) {
         // close the popup
-		console.log(data);
         $("#add_new_closed_question").modal("hide");
 
         // read records again
@@ -158,10 +155,10 @@ function UpdateUserDetails() {
 function answerQuestion(type, value) {
     // Update the game data by requesting to the server using ajax
     $.post("/ajax/answerQuestion", {
-            value: value
+            value: value,
+			type: type
         },
         function (data, status) {
-			console.log(data);
             // next question
             getQuestion();
         }

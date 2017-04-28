@@ -44,7 +44,7 @@
 			  </div>
 			  <div>
 				<span style="margin-left: 10px; display: inline-block;">
-				  Un cyber-terroriste lance une attaque de grande envergure sur les U.S.A.
+				  <?php echo $_SESSION['game_info']['Description'];?>
 				</span>
 			  </div>
 			  <div>
@@ -74,7 +74,7 @@
 			  </div>
 			  <div>
 				<span style="margin-left: 10px; display: inline-block;">
-				Démélez le vrai du faux dans cette enquête, grâce à vos compétences.
+						<?php echo $job['Description']; ?>
 				</span>
 			  </div>	
 			  <div>
@@ -104,7 +104,7 @@
 				  </div>
 				  <div>
 					<span style="margin-left: 10px; display: inline-block;">
-					  Un tueurs en serie s'apprête à faire une nouvelle victime.
+						<?php echo $fg['Description']; ?>
 					</span>
 				  </div>
 				  <div>

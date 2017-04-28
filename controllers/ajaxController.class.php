@@ -372,7 +372,7 @@ class ajaxController{
 		echo json_encode($response);
 	}
 
-	public function getQuestionAction($request){
+	public function getQuestionAction($request){		
 		$needle  = array();
 		
 		$dbh = controller::dbConnect();
@@ -383,6 +383,14 @@ class ajaxController{
 		
 		if($_SESSION['last_question'] >= $questionCount[0]){
 			echo 'Bravo vous avez repondu a toutes les questions, votre score: '. $_SESSION['score'];
+			$sth = $dbh->prepare('UPDATE game SET Is_finished = 1, Last_play = now() WHERE idGame = '. $_SESSION['id_game'] );
+			$sth->execute();
+			
+			unset($_SESSION['id_game']);
+			unset($_SESSION['id_job']);
+			unset($_SESSION['game_info']);
+			unset($_SESSION['last_question']);
+			unset($_SESSION['score']);
 			return true;
 		}
 

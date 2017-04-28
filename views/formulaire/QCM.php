@@ -52,19 +52,19 @@
         <div class="game-panel-down" style="margin-bottom: 10px; text-align: center;">
           <div style="background: white; padding: 15px; margin-bottom: 15px;">{{wording}}</div>
           <div class='answer-field'>
-            <button id="answer1" value="{{answer1}}" type="button" class="btn gfi-btn gfi-btn-second home-btn no-border">
+            <button id="answer1" data-type='QCM' value="{{answer1}}" type="button" class="answer_question btn gfi-btn gfi-btn-second home-btn no-border">
               <span class="gfi-btn-span firstspan">{{text_answer1}}</span>
               <span class="gfi-btn-span secondspan">{{text_answer1}}</span>
             </button>
-            <button id="answer1" value="{{answer2}}" type="button" class="btn gfi-btn gfi-btn-second home-btn no-border">
+            <button id="answer2" data-type='QCM' value="{{answer2}}" type="button" class="answer_question btn gfi-btn gfi-btn-second home-btn no-border">
               <span class="gfi-btn-span firstspan">{{text_answer2}}</span>
               <span class="gfi-btn-span secondspan">{{text_answer2}}</span>
             </button>
-            <button id="answer1" value="{{answer3}}" type="button" class="btn gfi-btn gfi-btn-second home-btn no-border">
+            <button id="answer3" data-type='QCM' value="{{answer3}}" type="button" class="answer_question btn gfi-btn gfi-btn-second home-btn no-border">
               <span class="gfi-btn-span firstspan">{{text_answer3}}</span>
               <span class="gfi-btn-span secondspan">{{text_answer3}}</span>
             </button>
-            <button id="answer1" value="{{answer4}}" type="button" class="btn gfi-btn gfi-btn-second home-btn no-border">
+            <button id="answer4" data-type='QCM' value="{{answer4}}" type="button" class="answer_question btn gfi-btn gfi-btn-second home-btn no-border">
               <span class="gfi-btn-span firstspan">{{text_answer4}}</span>
               <span class="gfi-btn-span secondspan">{{text_answer4}}</span>
             </button>

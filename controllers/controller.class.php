@@ -38,37 +38,6 @@ abstract class Controller{
         $sth->execute();
 		$res = $sth->fetch();
 
-        $sth = $dbh->prepare('SELECT * FROM game WHERE IdUser = '. $res['IdUser'] .' AND Is_finished = 0');
-        $sth->execute();
-		$game = $sth->fetch();
-		
-		$sth = $dbh->prepare('SELECT count(*) FROM game WHERE IdUser = '. $res['IdUser'] .' AND Is_finished = 1');
-        $sth->execute();
-		$countGame = $sth->fetch();
-
-		
-		$_SESSION['game_finished'] = 0;
-		if($countGame){
-			$_SESSION['game_finished']	= $countGame[0];
-		
-			$sth = $dbh->prepare('SELECT * FROM game INNER JOIN jobapplication ON jobapplication.IdJobApplication = jobapplication.IdJobApplication WHERE IdUser = '. $res['IdUser'] .' AND Is_finished = 1');
-			$sth->execute();
-			$finished_game = $sth->fetchAll();
-			$_SESSION['finished_game']  = $finished_game;
-		}
-		
-		if($game){
-			$sth = $dbh->prepare('SELECT * FROM jobapplication WHERE IdJobApplication = '.$game['IdJobApplication']);
-			$sth->execute();
-			$gameJob = $sth->fetch();
-			
-			$_SESSION['id_game']		= $game['IdGame'];
-			$_SESSION['id_job'] 		= $game['IdJobApplication'];
-			$_SESSION['game_info']		= $gameJob;
-			$_SESSION['last_question']  = $game['LastQuestion'];
-			$_SESSION['score']  		= $game['Score'];
-		}
-
         $_SESSION['id_user']      = $res['IdUser'];
         $_SESSION['name_user']    = $res['Name'];
         $_SESSION['surname_user'] = $res['Surname'];
