@@ -34,7 +34,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('default', function() {
-    gulp.run('scripts', 'styles', 'images');
+    gulp.run('scripts', 'styles');
 
     gulp.watch('./src/js/**', function(event) {
         gulp.run('scripts');

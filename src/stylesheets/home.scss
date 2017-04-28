@@ -1,5 +1,5 @@
 .home-container {
-  background: url('/src/img/home-bg.png') no-repeat left bottom fixed;
+  background: url('/src/img/home-bg.png') no-repeat left bottom;
   background-size: cover;
   height: 100%;
   text-align: center;
@@ -48,4 +48,30 @@
       margin: 5px 0 15px 0;
     }
   }
+}
+
+.game-panel{
+  background: url('/src/img/fondcombat.png') no-repeat left bottom;
+  background-size: cover;
+  height: 70%;
+  position: relative;
+}
+
+.game-panel-right{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 15px;
+}
+
+.game-panel-left{
+  position: absolute;
+  left: 60px;
+  bottom: 0;
+}
+
+.game-panel-down {
+  position: absolute;
+  bottom: -91px;
+  width: 100%;
 }

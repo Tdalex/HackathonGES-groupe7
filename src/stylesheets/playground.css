@@ -22,3 +22,15 @@ a {
 .full-width {
   width: 100%;
 }
+
+.img-cover{
+	display: block;
+    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+	object-fit: cover;
+}
+
+.no-border{
+  border-radius: 0 !important;
+}

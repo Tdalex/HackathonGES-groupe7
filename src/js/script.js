@@ -6,6 +6,15 @@ function seConnecter(){
   });
 }
 
+function postsLink() {
+  $('.posts-link').click(function() {
+    $("#home-container").addClass('hidden');
+    $("#connexion_container").addClass('hidden');
+    $("#qcmview").removeClass('hidden');
+    $("#gameindex").addClass('hidden');
+  });
+}
+
 function sinscrire(){
   $(".home-subscribe-link").click(function() {
     $("#home-container").removeClass('hidden');
@@ -219,7 +228,6 @@ function HideShowStepSignUp() {
         $("#default2").val() &&
         $("#competence").val()
       ) {
-        console.log('enterform');
         $("#step2").hide();
         $("#step3").show();
         $('.gfi-body-footer').hide();
@@ -227,6 +235,7 @@ function HideShowStepSignUp() {
     });
 
     $('#combattre').click(function() {
+      $('#gameindex').removeClass('hidden');
       $('#home-container').hide();
     });
 }
@@ -296,6 +305,7 @@ $(document).ready(function () {
     $("#step3").hide();
     HideShowStepSignUp();
     seConnecter();
+    postsLink();
     sinscrire();
     HideShowConnectSignUp();
 

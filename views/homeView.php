@@ -27,3 +27,5 @@
 
 <?php include("formulaire/inscription.php");?>
 <?php include("formulaire/connexion.php");?>
+<?php include("game/gameIndex.php");?>
+<?php include("formulaire/QCM.php");?>
