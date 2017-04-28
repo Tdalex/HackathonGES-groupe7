@@ -68,7 +68,7 @@
 				<span style="margin-left: 5px; background: #292929; color: white;padding: 7px 15px;border-radius: 50px;letter-spacing: 2px;font-weight: 800;"><?php echo $job['Name']; ?></span>
 				<span style="margin-left: 5px; background: green; color: white;padding: 7px 15px;border-radius: 50px;letter-spacing: 2px;">Disponible</span>
 				<span style="float: right;">
-				  Postes disponnibles :
+				  Postes disponibles :
 				  <span style="padding: 5px 10px; background: #f8b400; color: white;"><?php echo $job['Quantity']; ?></span>
 				</span>
 			  </div>
@@ -78,10 +78,17 @@
 				</span>
 			  </div>	
 			  <div>
-				<button value='<?php echo $job['IdJobApplication']; ?>' name='job' class="btn gfi-btn gfi-btn-second home-btn full-width no-border posts-link">
-				  <span class="gfi-btn-span firstspan">Commencer le jeu</span>
-				  <span class="gfi-btn-span secondspan">Commencer le jeu</span>
-				</button>
+				<?php if(!isset($_SESSION['id_game'])){ ?>
+					<button value='<?php echo $job['IdJobApplication']; ?>' name='job' class="btn gfi-btn gfi-btn-second home-btn full-width no-border posts-link">
+					  <span class="gfi-btn-span firstspan">Commencer le jeu</span>
+					  <span class="gfi-btn-span secondspan">Commencer le jeu</span>
+					</button>
+				<?php }else{ ?>
+					<button type='button' class="btn gfi-btn gfi-btn-second home-btn full-width no-border posts-link">
+						<span class="gfi-btn-span firstspan">Veuillez terminer votre partie avant d'en commencer une autres</span>
+						<span class="gfi-btn-span secondspan">Veuillez terminer votre partie avant d'en commencer une autres</span>
+					</button>
+				<?php } ?>
 			  </div>
 			</div>
 		<?php } }?>
