@@ -92,7 +92,7 @@ class ajaxController{
 									</tr>
 								</thead>';
 
-					$query = "SELECT * FROM game INNER JOIN candidate ON candidate.IdCandidate = candidate.IdCandidate";
+					$query = "SELECT * FROM game INNER JOIN user ON game.IdUser = user.IdUser";
 
 					$dbh = controller::dbConnect();
 					$sth = $dbh->prepare($query);
@@ -105,12 +105,20 @@ class ajaxController{
 					{
 						foreach($results as $result)
 						{
+							$query = "SELECT * FROM jobapplication INNER JOIN game ON game.IdJobApplication = jobapplication.IdJobApplication WHERE jobapplication.IdJobApplication=".$result['IdJobApplication'];
+
+							$sth = $dbh->prepare($query);
+							$sth->execute();
+							$job = $sth->fetch();
+							
+							$finished = $result['Is_finished'] ? 'oui' : 'non';
 							$data .= '<tr>
 								<td>'.$result['Surname'] . ' ' . $result['Name'].'</td>
 								<td>'.$result['Email'].'</td>
+								<td>'.$job['Name'].'</td>
 								<td>'.$result['Score'].'</td>
 								<td>'.$result['Last_play'].'</td>
-								<td>'.$result['is_finished'].'</td>
+								<td>'.$finished.'</td>
 								<td>
 									<button data-type="Jeux" data-id="'.$result['IdGame'].'" class="getdetail btn btn-warning">Detail</button>
 								</td>
