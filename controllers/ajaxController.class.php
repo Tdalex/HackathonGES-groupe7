@@ -444,12 +444,13 @@ class ajaxController{
 
 		$dbh = controller::dbConnect();
 
-		$query = 'SELECT * FROM answer WHERE IdQuestion = ' . $_SESSION['idQuestion'] . ' AND IdAnswer = '. $_POST['value'];
-		$sth = $dbh->prepare($query);
-		$sth->execute();
-		$answer = $sth->fetch();
+	
 		
 		if($_POST['type'] == 'QCM'){
+				$query = 'SELECT * FROM answer WHERE IdQuestion = ' . $_SESSION['idQuestion'] . ' AND IdAnswer = '. $_POST['value'];
+				$sth = $dbh->prepare($query);
+				$sth->execute();
+				$answer = $sth->fetch();
 			if($answer['Is_answer']){
 				$point = '+1';
 				$_SESSION['score']++;
@@ -458,7 +459,11 @@ class ajaxController{
 				$_SESSION['score']--;
 			}
 		}else{
-			if($answer['Text'] == $value){
+				$query = 'SELECT * FROM answer WHERE IdQuestion = ' . $_SESSION['idQuestion'];
+				$sth = $dbh->prepare($query);
+				$sth->execute();
+				$answer = $sth->fetch();
+			if($answer['Text'] == $_POST['val']){
 				$point = '+1';
 				$_SESSION['score']++;
 			}else{

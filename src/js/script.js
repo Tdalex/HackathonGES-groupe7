@@ -152,10 +152,11 @@ function UpdateUserDetails() {
     );
 }
 
-function answerQuestion(type, value) {
+function answerQuestion(type, value, val) {
     // Update the game data by requesting to the server using ajax
     $.post("/ajax/answerQuestion", {
             value: value,
+            val: val,
 			type: type
         },
         function (data, status) {
@@ -192,12 +193,8 @@ $(document).on('click', '.deleteRecord', function() {
 });
 
 $(document).on('click', '.answer_question', function() {
-	answerQuestion($(this).data('type'), $(this).val());
+	answerQuestion($(this).data('type'), $(this).val(), $('#answer').val());
 });
-
-function HideShowConnectSignUp() {
-
-}
 
 function HideShowStepSignUp() {
     $("#s1_next").click(function() {
@@ -303,7 +300,6 @@ $(document).ready(function () {
     HideShowStepSignUp();
     seConnecter();
     // postsLink();
-    sinscrire();
-    HideShowConnectSignUp();
+    sinscrire()
 
 });
