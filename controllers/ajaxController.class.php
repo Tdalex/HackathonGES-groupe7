@@ -396,7 +396,7 @@ class ajaxController{
 		
 		if($type == 'QCM'){
 			$questionTemplate = __DIR__ . '/../views/formulaire/QCM.php';
-			$needle = array('{{score}}','{{wording}}','{{answer1}}','{{answer2}}','{{answer3}}','{{answer4}}','{{text_answer1}}','{{text_answer2}}','{{text_answer3}}','{{text_answer4}}');
+			$needle = array('{{skill}}','{{username}}','{{job_name}}','{{score}}','{{wording}}','{{answer1}}','{{answer2}}','{{answer3}}','{{answer4}}','{{text_answer1}}','{{text_answer2}}','{{text_answer3}}','{{text_answer4}}');
 			$replace = array($_SESSION['score'], $question['Wording']);
 			
 			//answer
@@ -404,17 +404,17 @@ class ajaxController{
 			$sth = $dbh->prepare($query);
 			$sth->execute();
 			$answer = $sth->fetchAll();
-			$replace = array($_SESSION['score'], $question['Wording'],$answer[0]['IdAnswer'],$answer[1]['IdAnswer'],$answer[2]['IdAnswer'],$answer[3]['IdAnswer'],$answer[0]['Text'],$answer[1]['Text'],$answer[2]['Text'],$answer[3]['Text']);
+			$replace = array($_SESSION['user_skill'],$_SESSION['surname_user'],$_SESSION['game_info']['Name'],$_SESSION['score'], $question['Wording'],$answer[0]['IdAnswer'],$answer[1]['IdAnswer'],$answer[2]['IdAnswer'],$answer[3]['IdAnswer'],$answer[0]['Text'],$answer[1]['Text'],$answer[2]['Text'],$answer[3]['Text']);
 		}else{
 			$questionTemplate = __DIR__ . '/../views/formulaire/openQuestion.php';
-			$needle = array('{{score}}','{{wording}}','{{answer}}');
+			$needle = array('{{skill}}','{{username}}','{{job_name}}','{{score}}','{{wording}}','{{answer}}');
 			
 			//answer
 			$query = "SELECT * FROM answer WHERE IdQuestion = " . $question['IdQuestion'];
 			$sth = $dbh->prepare($query);
 			$sth->execute();
 			$answer = $sth->fetch();
-			$replace = array($_SESSION['score'], $question['Wording'],$answer['Text']);
+			$replace = array($_SESSION['user_skill'],$_SESSION['surname_user'],$_SESSION['game_info']['Name'],$_SESSION['score'], $question['Wording'],$answer['Text']);
 		}
 
 		$template = file_get_contents($questionTemplate, FILE_USE_INCLUDE_PATH);

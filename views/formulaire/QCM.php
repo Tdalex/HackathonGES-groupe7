@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-9 full-height">
       <div style="background: white; border: solid 1px grey; padding: 15px;position: relative; margin-bottom: 15px;">
-        <span style="font-size: 20px; font-weight: 800;">Développeur Java</span>
+        <span style="font-size: 20px; font-weight: 800;">{{job_name}}</span>
       </div>
 
       <div class="game-panel">
@@ -30,7 +30,7 @@
         <div class="game-panel-left">
           <div style="width: 350px; background: white;height: 100px;position: absolute;right: -370px;border-radius: 10px; padding: 10px; border: solid 3px #292929; bottom: 35px;">
             <span style="font-size: 18px; font-weight: 800; display : inline-block;">
-              <span style="display:block;">Yves<span>
+              <span style="display:block;">{{username}}<span>
               <span style="display:block;">4/10</span>
               <span>
                 <div style="width: 320px; height: 15px; background: grey; position: relative; border-radius: 10px;">
@@ -40,8 +40,8 @@
 
             </span>
             <button class="btn gfi-btn gfi-btn-second home-btn full-width" style="position: absolute;right: -279px;bottom: 32px;border-radius: 20px;width: 250px;">
-              <span class="gfi-btn-span firstspan">CONFIANCE</span>
-              <span class="gfi-btn-span secondspan">CONFIANCE</span>
+              <span class="gfi-btn-span firstspan">{{skill}}</span>
+              <span class="gfi-btn-span secondspan">{{skill}}</span>
             </button>
           </div>
           <img src="/src/img/back1.png" height="250">
