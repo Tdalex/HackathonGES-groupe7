@@ -19,7 +19,12 @@
 </head>
 <body>
 	<?php if(isset($_SESSION['id_user'])){ ?>
-		<a href='/index/logout'>deconnexion</a>
+		<form action='/index/logout' method='POST'>
+			<button type='submit' class="btn gfi-btn gfi-btn-second home-btn" style="float: right; margin-bottom: 20px; margin-right: 15px;">
+			  <span class="gfi-btn-span firstspan">Deconnexion</span>
+			  <span class="gfi-btn-span secondspan">Deconnexion</span>
+			</button>
+		</form>
 	<?php } ?>
 	<?php include $this->v;?>
 
